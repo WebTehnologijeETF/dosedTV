@@ -59,3 +59,39 @@ body{
 	text-decoration: none;
 }
 
+
+.news{
+	display: table;
+	border-spacing: 10px;
+}
+
+
+.articles{
+	border-bottom: 1px solid #d3d3d3;
+}
+
+.article1, .article2, .article3{
+	width: 300px;
+	font-family: Raleway;
+	display: table-cell;
+	padding: 10px 10px 10px 10px;
+	border-radius: 15px 15px 15px 15px;
+	background-color: rgba(211,211,211,0.2);
+}
+
+
+
+
+.articles img{
+	height: auto;
+	width: auto;
+	max-height: 200px;
+	max-width: 200px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.articles a{
+	text-decoration: none;
+}
