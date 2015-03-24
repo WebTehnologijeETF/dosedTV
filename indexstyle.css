@@ -1,17 +1,52 @@
 @import url(http://fonts.googleapis.com/css?family=Raleway|Hind);
 
+*{
+	margin: 0;
+	padding: 0;
+}
+
 body{
 	background-image: url('pictures/background.png');
 	background-size: cover;
-	width: 1000px;
-	margin-left: auto;
-	margin-right: auto;
+
+}
+
+.body{
+	display: inline-block;
+	width: 100%;
+	
 }
 
 .header{
 	display: table;
-	margin-right: auto;
 	margin-left: auto;
+	margin-right: auto;
+
+
+}
+
+.logins{
+	position: relative;
+	float: right;
+}
+
+.logins a{
+	display: inline-block;
+	font-family: Hind;
+	font-size: 20px;
+	text-decoration: none;
+	border-radius: 5px;
+	padding-top: 4px;
+	padding-bottom: 4px;
+	padding-left: 10px;
+	padding-right: 10px;
+	background-color: rgba(211,211,211,0.5)
+}
+
+.logins a:hover{
+
+	background-color: gray;
+
 }
 
 .header p{
@@ -22,7 +57,7 @@ body{
 	font-style: italic;
 	color: gray;
 	position: relative;
-	bottom: 15px;
+	
 }
 
 .header img{
@@ -42,6 +77,8 @@ body{
 
 .nav{
 	display: table;
+	position: relative;
+
 	font-family: Raleway;
 	padding-right: 43px;
 	margin-right: auto;
@@ -52,15 +89,38 @@ body{
 	display: inline-block;
 	border-radius: 7px;
 	background-color: rgba(211,211,211,0.5);
-	padding:3 3 3 3;
+	padding:5px 5px;
+	padding-right: 10px;
+	padding-left: 10px;
+	margin-left: 10px;
+}
+
+.nav li:hover{
+	background-color: gray;
 }
 
 .nav a{
 	text-decoration: none;
+	font-size: 20px;
 }
 
+.news{
+	position: relative;
+	top: 30px;
+	left: 100px;
+	padding-bottom: 30px;
+}
+
+.headline{
+	font-size: 35px;
+	font-family: Hind;
+	font-style: italic;
+	color: gray;
+
+}
 
 .news{
+	float: left;
 	display: table;
 	border-spacing: 10px;
 }
@@ -71,6 +131,7 @@ body{
 }
 
 .article1, .article2, .article3{
+	display: inline-block;
 	width: 300px;
 	font-family: Raleway;
 	display: table-cell;
@@ -79,7 +140,17 @@ body{
 	background-color: rgba(211,211,211,0.2);
 }
 
+#author{
+	float: right;
+	color: gray;
+	font-style: italic;
+}
 
+#date{
+	font-size: italic;
+	position: relative;
+	font-size: 13px;
+}
 
 
 .articles img{
@@ -95,3 +166,10 @@ body{
 .articles a{
 	text-decoration: none;
 }
+
+.footer{
+
+	text-align: center;
+	clear: both;
+}
+
