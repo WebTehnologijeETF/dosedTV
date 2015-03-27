@@ -12,11 +12,14 @@ body{
 	width:80%;
 	margin-left: auto;
 	margin-right: auto;
+
 	
 }
 
 .recommended{
 	position: relative;
+	border: 1px solid green;
+	width: ;
 }
 
 .header{
@@ -106,11 +109,6 @@ body{
 	font-size: 20px;
 }
 
-.recommended{
-	position: relative;
-	margin-top: 5%;
-	margin-bottom: 5%;
-}
 
 .headline{
 	font-size: 35px;
@@ -120,10 +118,14 @@ body{
 
 }
 
-.recommended{
+.episodes{
 	display: table;
 	border-spacing: 10px;
 	width: 80%;
+	position: relative;
+	margin-top: 5%;
+	margin-bottom: 5%;
+	margin-left: 6%;
 }
 
 
@@ -132,57 +134,113 @@ body{
 }
 
 .tables{
-
-}
-.show{
 	width: 100%;
+	border-radius: 10px;
 	font-family: Raleway;
-	margin-bottom: 5%;
-	padding-top: 1%;
-	padding-left: 1%;
-	border-radius: 15px 15px 15px 15px;
-	background-color: rgba(211,211,211,0.4);
+}
+table{
+	font-family: Raleway;
+	border-spacing: 0;
 }
 
-.show :hover{
-	background-color: rgba(211,211,211,1);
+th:first-child{
+	 border-radius: 30px 0 0 0;
 }
 
-#author{
-	float: right;
-	color: gray;
-	font-style: italic;
-}
-
-#date{
-	font-size: italic;
-	position: relative;
-	font-size: 13px;
+th:last-child{
+	 border-radius: 0 30px 0 0;
 }
 
 
-.show img{
-	height: auto;
-	width: auto;
-	max-height: 150px;	
-	max-width: 250px;
-	float:left;
-	padding-right: 10px;
+
+
+.weekdays th{
+	height: 60px;
+	font-family: Raleway;
+	text-align: center;
+	border-left
+	display: table-cell;
+	background-color: rgba(211,211,211,0.3);
 }
 
-.show a{
-	font-size: 30px;
-	font-family: Hind;
+
+.odays{
+	border-right: 1px solid rgba(211,211,211,1);
+}
+.trone{
+	font-family: Raleway;
+	width: 10%;
+	text-align: center;
+	font-size: 15px;
+	
+}
+
+.trone a{
 	text-decoration: none;
-	font-style: italic;
 }
-.show p{
-	text-align: left;
+
+.trtwo a{
+	text-decoration: none;
 }
+
+.trtwo{
+	font-family: Raleway;
+	width: 10%;
+	text-align: center;
+	font-size: 15px;
+	background-color: rgba(211,211,211,0.35);
+	text-decoration: none;
+}
+
+.blankrow{
+	font-family: Raleway;
+	
+
+}
+.blankrow td {
+	height:30px;
+	border-radius: 0 0 30px 30px;
+	background-color: rgba(211,211,211,0.35);
+}
+
+
+
+
+.trtwo td{
+	border-bottom:1px solid rgba(211,211,211,0.8);
+}
+
+.trone td{
+	border-bottom:1px solid rgba(211,211,211,0.8);
+}
+
 .footer{
 	margin 0 auto;
 	text-align: center;
 }
+
+
+#lefta{
+	height: auto;
+	width: auto;
+	max-height: 50px;
+	max-width: 50px;
+	float:left;
+	margin-left: 100px;
+
+}
+
+#righta{
+	height: auto;
+	width: auto;
+	max-height: 50px;
+	max-width: 50px;
+	float:right;
+	margin-right: 100px;
+
+}
+
+
 
 
 
