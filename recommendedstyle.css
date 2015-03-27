@@ -5,17 +5,18 @@ body{
 	background-image: url('pictures/background.png');
 	background-size: cover;
 
+
 }
 
-.body{
+.main{
 	width:80%;
 	margin-left: auto;
 	margin-right: auto;
 	
 }
 
-.news{
-	position: relative; 
+.recommended{
+	position: relative;
 }
 
 .header{
@@ -105,10 +106,10 @@ body{
 	font-size: 20px;
 }
 
-.news{
+.recommended{
 	position: relative;
-	top: 30px;
-	padding-bottom: 30px;
+	margin-top: 5%;
+	margin-bottom: 5%;
 }
 
 .headline{
@@ -119,7 +120,7 @@ body{
 
 }
 
-.news{
+.recommended{
 	display: table;
 	border-spacing: 10px;
 	width: 80%;
@@ -130,14 +131,22 @@ body{
 	border-bottom: 1px solid #d3d3d3;
 }
 
-.article1, .article2, .article3{
-	display: inline-block;
-	width: 300px;
+.shows{
+	display: table-row;
+
+}
+.show{
+	width: 100%;
 	font-family: Raleway;
-	display: table-cell;
-	padding: 10px 10px 10px 10px;
+	margin-bottom: 5%;
+	padding-top: 1%;
+	padding-left: 1%;
 	border-radius: 15px 15px 15px 15px;
-	background-color: rgba(211,211,211,0.2);
+	background-color: rgba(211,211,211,0.4);
+}
+
+.show :hover{
+	background-color: rgba(211,211,211,1);
 }
 
 #author{
@@ -153,23 +162,29 @@ body{
 }
 
 
-.articles img{
+.show img{
 	height: auto;
 	width: auto;
-	max-height: 200px;
-	max-width: 200px;
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
+	max-height: 150px;	
+	max-width: 250px;
+	float:left;
+	padding-right: 10px;
 }
 
-.articles a{
+.show a{
+	font-size: 30px;
+	font-family: Hind;
 	text-decoration: none;
+	font-style: italic;
+}
+.show p{
+	text-align: left;
 }
 
 .footer{
+	position: absolute;
 
-	text-align: center;
-	clear: both;
 }
+
+
 
