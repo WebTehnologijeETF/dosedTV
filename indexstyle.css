@@ -5,18 +5,17 @@ body{
 	background-image: url('pictures/background.png');
 	background-size: cover;
 
+
 }
 
-.body{
+.main{
 	width:80%;
 	margin-left: auto;
 	margin-right: auto;
+
 	
 }
 
-.news{
-	position: relative; 
-}
 
 .header{
 	display: table;
@@ -105,11 +104,6 @@ body{
 	font-size: 20px;
 }
 
-.news{
-	position: relative;
-	top: 30px;
-	padding-bottom: 30px;
-}
 
 .headline{
 	font-size: 35px;
@@ -119,22 +113,41 @@ body{
 
 }
 
+.footer{
+	margin 0 auto;
+	text-align: center;
+	clear: both;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .news{
-	display: table;
 	border-spacing: 10px;
 	width: 80%;
+	position: relative;
 }
 
 
 .articles{
-	border-bottom: 1px solid #d3d3d3;
 }
 
 .article1, .article2, .article3{
 	display: inline-block;
-	width: 300px;
+	width: 30%;
 	font-family: Raleway;
-	display: table-cell;
 	padding: 10px 10px 10px 10px;
 	border-radius: 15px 15px 15px 15px;
 	background-color: rgba(211,211,211,0.2);
@@ -167,9 +180,5 @@ body{
 	text-decoration: none;
 }
 
-.footer{
 
-	text-align: center;
-	clear: both;
-}
 

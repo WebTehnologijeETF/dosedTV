@@ -16,11 +16,6 @@ body{
 	
 }
 
-.recommended{
-	position: relative;
-	border: 1px solid green;
-	width: ;
-}
 
 .header{
 	display: table;
@@ -118,6 +113,45 @@ body{
 
 }
 
+
+.footer{
+	margin 0 auto;
+	clear: both;
+	text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .contactus{
 	display: table;
 	border-spacing: 10px;
@@ -138,20 +172,18 @@ body{
 	border-radius: 10px;
 	font-family: Raleway;
 }
-table{
+.tables table{
 	font-family: Raleway;
 	border-spacing: 0;
 }
 
-th:first-child{
+.tables th:first-child{
 	 border-radius: 30px 0 0 0;
 }
 
-th:last-child{
+.tables th:last-child{
 	 border-radius: 0 30px 0 0;
 }
-
-
 
 
 .weekdays th{
@@ -167,6 +199,7 @@ th:last-child{
 .odays{
 	border-right: 1px solid rgba(211,211,211,1);
 }
+
 .trone{
 	font-family: Raleway;
 	width: 10%;
@@ -218,12 +251,6 @@ th:last-child{
 .trone td{
 	border-bottom:1px solid rgba(211,211,211,0.8);
 }
-
-.footer{
-	margin 0 auto;
-	text-align: center;
-}
-
 
 #lefta{
 	height: auto;
