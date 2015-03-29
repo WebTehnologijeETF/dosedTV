@@ -12,17 +12,6 @@ body{
 	width:80%;
 	margin-left: auto;
 	margin-right: auto;
-
-	
-}
-
-
-.header{
-	display: table;
-	margin-left: auto;
-	margin-right: auto;
-
-
 }
 
 .logins{
@@ -46,33 +35,12 @@ body{
 .logins a:hover{
 
 	background-color: gray;
-
 }
 
-.header p{
-	font-family: Hind;
-	display: table;
-	margin-left: auto;
-	margin-right: auto;
-	font-style: italic;
-	color: gray;
-	position: relative;
-	
-}
 
-.header img{
-	height: auto;
-	width: auto;
-	max-height: 150px;
-	max-width: 150px;
-}
-
-.header h1{
-	font-family: Hind;
-	float: right;
-	position: relative;
-	font-size: 55px;
-	top: 50px;
+#logo{
+	width: 33%;
+	margin: 0 auto;
 }
 
 .nav{
@@ -114,7 +82,7 @@ body{
 }
 
 .footer{
-	margin 0 auto;
+	margin: 0px auto;
 	text-align: center;
 	clear: both;
 }
@@ -131,28 +99,26 @@ body{
 
 
 
+.contactus{
+	font-family: Hind;
+	display: inline-block;
+	border-spacing: 10px;
+	width: 80%;
+	position: relative;
+	margin-top: 5%;
+	margin-bottom: 5%;
+	margin-left: 6%;
+}
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#mark{
+	background-color: lightblue;
+}
+#submit{
+	width: 250px;
+	height: 50px;
+}
 
 
 
@@ -177,12 +143,15 @@ body{
 
 .tables{
 	width: 100%;
+
 	border-radius: 10px;
 	font-family: Raleway;
 }
-table{
+.tables table{
 	font-family: Raleway;
 	border-spacing: 0;
+	margin-right: auto;
+	margin-left: auto;
 }
 
 th:first-child{
@@ -199,7 +168,6 @@ th:last-child{
 	height: 60px;
 	font-family: Raleway;
 	text-align: center;
-	border-left
 	display: table-cell;
 	background-color: rgba(211,211,211,0.3);
 }
@@ -238,7 +206,7 @@ th:last-child{
 	
 
 }
-.blankrow td {
+.blankrow th {
 	height:30px;
 	border-radius: 0 0 30px 30px;
 	background-color: rgba(211,211,211,0.35);
@@ -274,6 +242,129 @@ th:last-child{
 	max-width: 50px;
 	float:right;
 	margin-right: 100px;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.recommended{
+	border-spacing: 10px;
+	width: 80%;
+	margin-top: 5%;
+	margin-bottom: 5%;
+	position: relative;
+}
+
+
+.articles{
+	border-bottom: 1px solid #d3d3d3;
+}
+
+.tables{
+
+}
+.show{
+	height: 150px;	
+	width: 100%;
+	font-family: Raleway;
+	margin-bottom: 5%;
+	padding-top: 1%;
+	padding-left: 1%;
+	border-radius: 15px 15px 15px 15px;
+	background-color: rgba(211,211,211,0.4);
+}
+
+.show :hover{
+	background-color: rgba(211,211,211,1);
+}
+
+
+
+
+.show img{
+	max-height: 150px;	
+	max-width: 250px;
+	float:left;
+	padding-right: 10px;
+}
+
+.show a{
+	font-size: 30px;
+	font-family: Hind;
+	text-decoration: none;
+	font-style: italic;
+}
+.show p{
+	text-align: left;
+}
+
+
+.links{
+	font-family: Hind;
+	float: right;
+	margin-right:15px;
+	margin-top: 57px;
+	border-radius: 15px;
+	text-decoration: none;
+	
+
+}
+
+.links ul{
+	list-style-image: url('pictures/bullet1.gif');
+	background-color: rgba(211,211,211,0.4);
+	width:80%;
+	border-radius: 15px;
+}
+
+.links a{
+	text-decoration: none;
+}
+.links h2{
+	color:gray;
+	font-family: Raleway;
+	font-style: italic;
 
 }
 
