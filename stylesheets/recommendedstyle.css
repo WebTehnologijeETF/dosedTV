@@ -82,179 +82,10 @@ body{
 }
 
 .footer{
-	margin: 0px auto;
+	margin 0 auto;
 	text-align: center;
 	clear: both;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-.contactus{
-	font-family: Hind;
-	display: inline-block;
-	border-spacing: 10px;
-	width: 80%;
-	position: relative;
-	margin-top: 5%;
-	margin-bottom: 5%;
-	margin-left: 6%;
-}
-
-
-
-#mark{
-	background-color: lightblue;
-}
-#submit{
-	width: 250px;
-	height: 50px;
-}
-
-
-
-
-
-
-
-.episodes{
-	display: table;
-	border-spacing: 10px;
-	width: 80%;
-	position: relative;
-	margin-top: 5%;
-	margin-bottom: 5%;
-	margin-left: 6%;
-}
-
-
-.articles{
-	border-bottom: 1px solid #d3d3d3;
-}
-
-.tables{
-	width: 100%;
-
-	border-radius: 10px;
-	font-family: Raleway;
-}
-.tables table{
-	font-family: Raleway;
-	border-spacing: 0;
-	margin-right: auto;
-	margin-left: auto;
-}
-
-th:first-child{
-	 border-radius: 30px 0 0 0;
-}
-
-th:last-child{
-	 border-radius: 0 30px 0 0;
-}
-
-
-
-.weekdays th{
-	height: 60px;
-	font-family: Raleway;
-	text-align: center;
-	display: table-cell;
-	background-color: rgba(211,211,211,0.3);
-}
-
-
-.odays{
-	border-right: 1px solid rgba(211,211,211,1);
-}
-.trone{
-	font-family: Raleway;
-	width: 10%;
-	text-align: center;
-	font-size: 15px;
-	
-}
-
-.trone a{
-	text-decoration: none;
-}
-
-.trtwo a{
-	text-decoration: none;
-}
-
-.trtwo{
-	font-family: Raleway;
-	width: 10%;
-	text-align: center;
-	font-size: 15px;
-	background-color: rgba(211,211,211,0.35);
-	text-decoration: none;
-}
-
-.blankrow{
-	font-family: Raleway;
-	
-
-}
-.blankrow td {
-	height:30px;
-	border-radius: 0 0 30px 30px;
-	background-color: rgba(211,211,211,0.35);
-}
-
-
-
-
-.trtwo td{
-	border-bottom:1px solid rgba(211,211,211,0.8);
-}
-
-.trone td{
-	border-bottom:1px solid rgba(211,211,211,0.8);
-}
-
-
-
-#lefta{
-	height: auto;
-	width: auto;
-	max-height: 50px;
-	max-width: 50px;
-	float:left;
-	margin-left: 100px;
-
-}
-
-#righta{
-	height: auto;
-	width: auto;
-	max-height: 50px;
-	max-width: 50px;
-	float:right;
-	margin-right: 100px;
-
-}
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -319,7 +150,17 @@ th:last-child{
 	background-color: rgba(211,211,211,1);
 }
 
+#author{
+	float: right;
+	color: gray;
+	font-style: italic;
+}
 
+#date{
+	font-size: italic;
+	position: relative;
+	font-size: 13px;
+}
 
 
 .show img{
@@ -367,6 +208,42 @@ th:last-child{
 	font-style: italic;
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

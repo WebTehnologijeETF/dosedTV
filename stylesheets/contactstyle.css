@@ -1,0 +1,145 @@
+@import url(http://fonts.googleapis.com/css?family=Raleway|Hind);
+
+
+body{
+	background-image: url('pictures/background.png');
+	background-size: cover;
+
+
+}
+
+.main{
+	width:80%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.logins{
+	position: relative;
+	float: right;
+}
+
+.logins a{
+	display: inline-block;
+	font-family: Hind;
+	font-size: 20px;
+	text-decoration: none;
+	border-radius: 5px;
+	padding-top: 4px;
+	padding-bottom: 4px;
+	padding-left: 10px;
+	padding-right: 10px;
+	background-color: rgba(211,211,211,0.5)
+}
+
+.logins a:hover{
+
+	background-color: gray;
+}
+
+
+#logo{
+	width: 33%;
+	margin: 0 auto;
+}
+
+.nav{
+	display: table;
+	position: relative;
+
+	font-family: Raleway;
+	padding-right: 43px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.nav li{
+	display: inline-block;
+	border-radius: 7px;
+	background-color: rgba(211,211,211,0.5);
+	padding:5px 5px;
+	padding-right: 10px;
+	padding-left: 10px;
+	margin-left: 10px;
+}
+
+.nav li:hover{
+	background-color: gray;
+}
+
+.nav a{
+	text-decoration: none;
+	font-size: 20px;
+}
+
+
+.headline{
+	font-size: 35px;
+	font-family: Hind;
+	font-style: italic;
+	color: gray;
+
+}
+
+.footer{
+	margin 0 auto;
+	text-align: center;
+	clear: both;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.contactus{
+	font-family: Hind;
+	display: table;
+	border-spacing: 10px;
+	width: 80%;
+	position: relative;
+	margin-top: 5%;
+	margin-bottom: 5%;
+	margin-left: 6%;
+}
+
+
+
+#mark{
+	background-color: lightblue;
+}
+#submit{
+	width: 250px;
+	height: 50px;
+}
+
+
+
+
+
+
