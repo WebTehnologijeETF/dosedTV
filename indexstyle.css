@@ -12,17 +12,6 @@ body{
 	width:80%;
 	margin-left: auto;
 	margin-right: auto;
-
-	
-}
-
-
-.header{
-	display: table;
-	margin-left: auto;
-	margin-right: auto;
-
-
 }
 
 .logins{
@@ -46,33 +35,12 @@ body{
 .logins a:hover{
 
 	background-color: gray;
-
 }
 
-.header p{
-	font-family: Hind;
-	display: table;
-	margin-left: auto;
-	margin-right: auto;
-	font-style: italic;
-	color: gray;
-	position: relative;
-	
-}
 
-.header img{
-	height: auto;
-	width: auto;
-	max-height: 150px;
-	max-width: 150px;
-}
-
-.header h1{
-	font-family: Hind;
-	float: right;
-	position: relative;
-	font-size: 55px;
-	top: 50px;
+#logo{
+	width: 33%;
+	margin: 0 auto;
 }
 
 .nav{
@@ -114,10 +82,13 @@ body{
 }
 
 .footer{
-	margin 0 auto;
+	margin: 0px auto;
 	text-align: center;
 	clear: both;
 }
+
+
+
 
 
 
