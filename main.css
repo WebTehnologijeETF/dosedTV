@@ -38,34 +38,81 @@ body{
 }
 
 
+#logo img{
+}
+
 #logo{
-	width: 33%;
+	width: 49%;
 	margin: 0 auto;
 }
 
 .nav{
-	display: table;
-	position: relative;
-
+	display:block;
+	z-index: 10;
+	clear:both;
 	font-family: Raleway;
-	padding-right: 43px;
+	width: 65%;
+	position: absolute;
+	left:18%;
+	margin-left:auto;
+	padding:0;
 	margin-right: auto;
-	margin-left: auto;
 }
 
-.nav li{
-	display: inline-block;
-	border-radius: 7px;
-	background-color: rgba(211,211,211,0.5);
-	padding:5px 5px;
-	padding-right: 10px;
-	padding-left: 10px;
-	margin-left: 10px;
+#navcol{
 }
 
-.nav li:hover{
-	background-color: gray;
+
+.navmain{
+	display:block;
 }
+.nav li li{
+}
+
+.nav ul{
+	display: block;
+	list-style: none;
+	
+}
+
+.nav ul li{
+	display: block;
+	float: left;
+}
+
+
+.nav ul li {
+	border-radius: 8px;	
+	margin-left:2%;
+	padding: 0;
+
+}
+
+.nav ul li:hover{
+}
+
+
+.nav ul li ul{
+	margin-left:0;
+	padding-right: 0;
+	padding-left:0;
+}
+
+
+.nav ul li ul li{
+	padding: 5px 5px;
+	margin-bottom: 2%;
+	float:none;
+	display:block;
+	background-color: rgba(211,211,211,0.3);
+	position:relative;
+}
+
+#navcol {
+}
+
+
+
 
 .nav a{
 	text-decoration: none;
@@ -89,6 +136,9 @@ body{
 
 
 
+.nav .navmain{
+	visibility: visible;
+}
 
 
 
@@ -373,6 +423,7 @@ th:last-child{
 
 
 .news{
+	padding-top:150px;
 	border-spacing: 10px;
 	width: 80%;
 	position: relative;
@@ -398,7 +449,7 @@ th:last-child{
 }
 
 #date{
-	font-size: italic;
+	font-style: italic;
 	position: relative;
 	font-size: 13px;
 }
@@ -420,3 +471,174 @@ th:last-child{
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.signupform{
+	font-family: Hind;
+	width: 90%;
+	font-size: 15px;
+	font-style: italic;
+	border-radius: 30px;
+	padding: 2%;
+	background-color: rgba(233,233,233,0.2);
+}
+
+#logindata{
+	
+	margin-right:5%;
+}
+
+#epic1{
+	visibility: hidden;
+}
+
+#epic2{
+	visibility: hidden;
+}
+
+#epic3{
+	visibility: hidden;
+}
+
+#epic4{
+	visibility: hidden;
+}
+
+#epic5{
+	visibility: hidden;
+}
+
+.signupform img{
+	width: 20px;
+	height: 20px;
+}
+
+#username{
+
+	margin-left:100px;
+}
+
+#pass1{
+	margin-left: 106px;
+}
+
+
+#pass2{
+	margin-left: 54px;
+}
+
+#email{
+	margin-left: 130px;
+}
+
+#name{
+	margin-left: 100px;
+}
+
+#birth{
+	margin-left: 77px;
+}
+
+#mradio{
+	margin-left: 107px;
+}
+.label{
+	font-size:18px;
+	float:left;
+}
+
+
+.userdata {
+	font-family:Raleway;
+	font-size: 20px;
+	font-style: italic underline;
+	color: gray;
+}
+
+.personaldata{
+	font-family:Raleway;
+	font-size: 20px;
+	font-style: italic underline;
+	color: gray;
+}
+
+
+#emsg{
+	padding-top: 3px;	
+}
+
+.errors {
+	margin-top:3%;
+
+	float:left;
+}
+
+.buttons{
+	clear: both;
+	padding-bottom: 100px;
+}
+
+#button{
+	width: 100px;
+	height: 50px;
+}
+
+#epic1m{
+	color:gray;
+	background-color: rgba(233,233,233,0.4);
+	padding: 4px;
+	border-radius: 15%;
+	visibility: hidden;
+}
+
+
+#epic2m{
+	visibility: hidden;
+	color:gray;
+	background-color: rgba(233,233,233,0.4);
+	padding: 4px;
+	border-radius: 15%;	
+}
+
+
+
+#epic3m{
+	visibility: hidden;
+	color:gray;
+	background-color: rgba(233,233,233,0.4);
+	padding: 4px;
+	border-radius: 15%;
+}
+
+
+#epic4m{
+	visibility: hidden;
+	color:gray;
+	background-color: rgba(233,233,233,0.4);
+	padding: 4px;
+	border-radius: 15%;
+}
+
+#epic5m{
+	visibility: hidden;
+	color:gray;
+	background-color: rgba(233,233,233,0.4);
+	padding: 4px;
+	border-radius: 15%;
+}

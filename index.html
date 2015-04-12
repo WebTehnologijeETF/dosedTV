@@ -3,6 +3,7 @@
 	<head>
 		<link href="main.css" rel="stylesheet">
 		<title> dosedTV - socialize your watching </title>
+		<script src="show.js"></script>
 	</head>
 	<body>
 		<div class="logins">
@@ -15,10 +16,25 @@
 			</div>
 			<div class="nav">
 				<ul>
-					<li><a href="index.html">News stories</a></li>
-					<li><a href="recommended.html">Recommended shows</a></li>
-					<li><a href="episodes.html">New episodes schedule</a></li>
-					<li><a href="#">Videos</a></li>
+					<li>
+						<ul>
+							<li class="navmain"><a href="index.html">News stories</a></li>
+						</ul>
+					<li>
+						<ul id="navcol" onmouseenter="addSubMenu(this)" onmouseleave="removeSubMenu(this)" >
+							<li class="navmain" ><a href="recommended.html">Recommended shows</a></li>
+						</ul>
+					</li>
+					<li>
+						<ul>
+							<li class="navmain"><a href="episodes.html">New episodes schedule</a></li>
+						</ul>
+					</li>
+					<li>
+						<ul>
+							<li class="navmain"><a href="#">Videos</a></li>
+						</ul>
+					</li>
 				</ul>
 			</div>
 			<div class="news">
