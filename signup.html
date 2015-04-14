@@ -1,15 +1,16 @@
-<!DOCTYPE>
+<!DOCTYPE html>
 <html>
 	<head>
 		<link href="main.css" rel="stylesheet">
-		<title> dosedTV - socialize your watching </title>
-		<script src="validate.js"></script>
 		<meta charset="UTF-8">
+		<title> dosedTV - socialize your watching </title>
+		<script src="show.js" type="text/javascript"></script>
+		<script src="validate.js" type="text/javascript"></script>
 	</head>
 	<body>
 		<div class="logins">
-			<a href="#">Log in </a>
-			<a href="#">Sign up</a>
+			<a href="signup.html">Log in </a>
+			<a href="signup.html">Sign up</a>
 		</div>
 		<div class="main">
 			<div id="logo">	
@@ -17,58 +18,71 @@
 			</div>
 			<div class="nav">
 				<ul>
-					<li><a href="index.html">News stories</a></li>
-					<li><a href="recommended.html">Recommended shows</a></li>
-					<li><a href="episodes.html">New episodes schedule</a></li>
-					<li><a href="#">Videos</a></li>
+					<li>
+						<ul>
+							<li class="navmain"><a href="index.html">News stories</a></li>
+						</ul>
+					</li>
+					<li>
+						<ul id="navcol" onmouseenter="addSubMenu()" onmouseleave="removeSubMenu()" >
+							<li class="navmain" ><a href="recommended.html">Recommended shows</a></li>
+						</ul>
+					</li>
+					<li>
+						<ul>
+							<li class="navmain"><a href="episodes.html">New episodes schedule</a></li>
+						</ul>
+					</li>
+					<li>
+						<ul>
+							<li class="navmain"><a href="#">Videos</a></li>
+						</ul>
+					</li>
 				</ul>
+			</div>	
+		<div class="signupform">
+			<div class="headline">
+				Sign up
 			</div>
-			<div class="signupform">
-				<div class="headline">
-					Sign up
-				</div>
-				<hr/>
-					<form id="logindata">
-					
-							<div class="userdata">
-								USER DATA
-							</div>
-							Username: <input id="username" type="text" onblur="validateUsername()">
-							<img id="epic1" src="pictures/error.png" onmouseenter="showError(this)" onmouseleave="hideError(this)">
-							<label id="epic1m">Names can only contain letters.</label><br>
+			<hr/>
+			<form id="logindata" action="tobe.php">					
+				<div class="userdata">
+					USER DATA
+					</div>
+					Username: <input id="username" type="text" onblur="validateUsername()">
+					<img alt="error" id="epic1" src="pictures/error.png" onmouseenter="showError(this)" onmouseleave="hideError(this)">
+					<label id="epic1m">Names can only contain letters.</label><br>
 
-							Password:<input id="pass1" type="password">
-							<img id="epic2" src="pictures/error.png" onmouseenter="showError(this)" onmouseleave="hideError(this)">
-							<label id="epic2m">Passwords do not match.</label><br>
+					Password:<input id="pass1" type="password">
+					<img alt="error" id="epic2" src="pictures/error.png" onmouseenter="showError(this)" onmouseleave="hideError(this)">
+					<label id="epic2m">Passwords do not match.</label><br>
 
-							Repeat password:<input id="pass2" type="password" onblur="validatePassword()">
-							<img id="epic3" src="pictures/error.png" onmouseenter="showError(this)" onmouseleave="hideError(this)">
-							<label id="epic3m">Passwords do not match.</label><br>
+					Repeat password:<input id="pass2" type="password" onblur="validatePassword()">
+					<img alt="error" id="epic3" src="pictures/error.png" onmouseenter="showError(this)" onmouseleave="hideError(this)">
+					<label id="epic3m">Passwords do not match.</label><br>
 
-							email:<input id="email" type="email" onblur="validateEmail()">
-							<img id="epic4" src="pictures/error.png" onmouseenter="showError(this)" onmouseleave="hideError(this)">
-							<label id="epic4m">Invalid email format.</label>
-							<br>
-
-							<div class="personaldata">
-								PERSONAL DATA
-							</div>
-							Full name:<input id="name" type="text"> <br>
-							Date of birth:<input id="birth" type="date"><img id="epic5" src="pictures/error.png"><label id="epic5m">You have to be over 18 years old.</label>
-							<br>
-							Gender:
-							<input id="mradio" type="radio" value="male" name="gender"> Male
-							<input type="radio" value="female" name="gender"> Female <br>
-					</form>
-				</div>
-				<br>
-				<div class="buttons">
-					<input type="button" id="button" value="Create" onclick="validateFields()">
-				</div>
+					email:<input id="email" type="email" onblur="validateEmail()">
+					<img alt="error" id="epic4" src="pictures/error.png" onmouseenter="showError(this)" onmouseleave="hideError(this)">
+					<label id="epic4m">Invalid email format.</label>
+					<br>
+					<div class="personaldata">
+						PERSONAL DATA
+					</div>
+					Full name:<input id="name" type="text"> <br>
+					Date of birth:<input id="birth" type="text"><img alt="error" id="epic5" src="pictures/error.png"><label id="epic5m">You have to be over 18 years old.</label>
+					<br>
+					Gender:
+					<input id="mradio" type="radio" value="male" name="gender"> Male
+					<input type="radio" value="female" name="gender"> Female <br>
+					<br>
+					<div class="buttons">
+						<input type="submit" id="button" value="Create" onclick="return validateFields()">
+					</div>				
+				</form>
 			</div>
 			<div class="footer">
 				<hr/>
-				<a href="contact.html"> Contact us. </a> All right reserved. Site developed by students of the Faculty of Electrical Engineering Sarajevo.
+				<a href="contact.html"> Contact us. </a> All right reserved. Site developed by students of the 	Faculty of Electrical Engineering Sarajevo.
 			</div>
 		</div>
 	</body>

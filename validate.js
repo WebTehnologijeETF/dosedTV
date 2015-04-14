@@ -94,8 +94,6 @@ function validateUsername(){
 }
 
 function validateFields(){
-	if(validateUsername() || validatePassword() || validateEmail())
-		alert("Error while gathering entered data.");
-	else
-		alert("Keep it sleezy");
+	return !(validateUsername() || validatePassword() || validateEmail());
+
 }

@@ -6,6 +6,7 @@ body{
 	background-size: cover;
 
 
+
 }
 
 .main{
@@ -25,7 +26,7 @@ body{
 	font-size: 20px;
 	text-decoration: none;
 	border-radius: 5px;
-	padding-top: 4px;
+	padding-top:  4px;
 	padding-bottom: 4px;
 	padding-left: 10px;
 	padding-right: 10px;
@@ -55,7 +56,6 @@ body{
 	position: absolute;
 	left:18%;
 	margin-left:auto;
-	padding:0;
 	margin-right: auto;
 }
 
@@ -93,9 +93,9 @@ body{
 
 
 .nav ul li ul{
-	margin-left:0;
-	padding-right: 0;
-	padding-left:0;
+	margin-left:0px;
+	padding-right: 0px;
+	padding-left:0px;
 }
 
 
@@ -104,8 +104,12 @@ body{
 	margin-bottom: 2%;
 	float:none;
 	display:block;
-	background-color: rgba(211,211,211,0.3);
+	background-color: rgba(211,211,211,0.4);
 	position:relative;
+}
+
+.nav ul li ul li:hover{
+	background-color: rgba(211,211,211,0.8)
 }
 
 #navcol {
@@ -155,7 +159,7 @@ body{
 	border-spacing: 10px;
 	width: 80%;
 	position: relative;
-	margin-top: 5%;
+	margin-top: 15%;
 	margin-bottom: 5%;
 	margin-left: 6%;
 }
@@ -179,11 +183,11 @@ body{
 .episodes{
 	display: table;
 	border-spacing: 10px;
-	width: 80%;
+	width: 100%;
+
 	position: relative;
-	margin-top: 5%;
+	margin-top: 16%;
 	margin-bottom: 5%;
-	margin-left: 6%;
 }
 
 
@@ -192,8 +196,8 @@ body{
 }
 
 .tables{
-	width: 100%;
-
+	width:80%;
+	margin: 0px auto;
 	border-radius: 10px;
 	font-family: Raleway;
 }
@@ -339,9 +343,10 @@ th:last-child{
 
 
 .recommended{
+	padding-top:10%;
 	border-spacing: 10px;
 	width: 80%;
-	margin-top: 5%;
+	margin-top: 7%;
 	margin-bottom: 5%;
 	position: relative;
 }
@@ -393,8 +398,9 @@ th:last-child{
 .links{
 	font-family: Hind;
 	float: right;
-	margin-right:15px;
-	margin-top: 57px;
+	margin-right: 0%;
+	margin-left:30px;
+	margin-top:17%;
 	border-radius: 15px;
 	text-decoration: none;
 	
@@ -423,7 +429,7 @@ th:last-child{
 
 
 .news{
-	padding-top:150px;
+	margin-top:17%;
 	border-spacing: 10px;
 	width: 80%;
 	position: relative;
@@ -491,12 +497,10 @@ th:last-child{
 
 .signupform{
 	font-family: Hind;
-	width: 90%;
+	width: 80%;
 	font-size: 15px;
 	font-style: italic;
-	border-radius: 30px;
-	padding: 2%;
-	background-color: rgba(233,233,233,0.2);
+	margin-top:16%;
 }
 
 #logindata{
@@ -567,20 +571,20 @@ th:last-child{
 .userdata {
 	font-family:Raleway;
 	font-size: 20px;
-	font-style: italic underline;
+	font-style: italic;
 	color: gray;
 }
 
 .personaldata{
 	font-family:Raleway;
 	font-size: 20px;
-	font-style: italic underline;
+	font-style: italic;
 	color: gray;
 }
 
 
 #emsg{
-	padding-top: 3px;	
+	margin-top: 3px;	
 }
 
 .errors {

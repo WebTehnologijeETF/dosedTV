@@ -1,14 +1,15 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"> 
+<!DOCTYPE HTML> 
 <html>
 	<head>
 		<link href="main.css" rel="stylesheet">
+		<meta charset="UTF-8">
 		<title> dosedTV - socialize your watching </title>
-		<script src="show.js"></script>
+		<script src="show.js" type="text/javascript"></script>
 	</head>
 	<body>
 		<div class="logins">
-			<a href="#">Log in </a>
-			<a href="#">Sign up</a>
+			<a href="signup.html">Log in </a>
+			<a href="signup.html">Sign up</a>
 		</div>
 		<div class="main">
 			<div id="logo">	
@@ -20,10 +21,11 @@
 						<ul>
 							<li class="navmain"><a href="index.html">News stories</a></li>
 						</ul>
+					</li>
 					<li>
-						<ul id="navcol" onmouseenter="addSubMenu(this)" onmouseleave="removeSubMenu(this)" >
-							<li class="navmain" ><a href="recommended.html">Recommended shows</a></li>
-						</ul>
+							<ul id="navcol" onmouseenter="addSubMenu()" onmouseleave="removeSubMenu()">
+								<li class="navmain" ><a href="recommended.html">Recommended shows</a></li>
+							</ul>
 					</li>
 					<li>
 						<ul>

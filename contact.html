@@ -2,56 +2,70 @@
 <html>
 	<head>
 		<link href="main.css" rel="stylesheet">
+		<script src="show.js" type="text/javascript"></script>
 		<title> dosedTV - socialize your watching </title>
 		<meta charset="UTF-8">
 	</head>
 	<body>
 		<div class="logins">
-			<a href="#">Log in </a>
-			<a href="#">Sign up</a>
+			<a href="signup.html">Log in </a>
+			<a href="signup.html">Sign up</a>
 		</div>
 		<div class="main">
-
 				<div id="logo">	
 					<img src="pictures/logotv.png" alt="Site logo"/>
 				</div>
-
 				<div class="nav">
 					<ul>
-						<li><a href="index.html">News stories</a></li>
-						<li><a href="recommended.html">Recommended shows</a></li>
-						<li><a href="episodes.html">New episodes schedule</a></li>
-						<li><a href="#">Videos</a></li>
+						<li>
+							<ul>
+								<li class="navmain"><a href="index.html">News stories</a></li>
+							</ul>
+						</li>
+						<li>	
+							<ul id="navcol" onmouseenter="addSubMenu(this)" onmouseleave="removeSubMenu(this)" >
+								<li class="navmain" ><a href="recommended.html">Recommended shows</a></li>
+							</ul>
+						</li>
+						<li>
+							<ul>
+								<li class="navmain"><a href="episodes.html">New episodes schedule</a></li>
+							</ul>
+						</li>
+						<li>
+							<ul>
+								<li class="navmain"><a href="#">Videos</a></li>
+							</ul>
+						</li>
 					</ul>
 				</div>
-
 				<div class="contactus">
-				<div class="headline">
-					Contact us
+					<div class="headline">
+						Contact us
+					</div>
+					<hr/>
+					<form class="form" action="contact.asp" target="_blank">
+						<div class="mail">
+							Your email address: 
+							<input type="email">
+						</div>
+						<br>
+						<div class="site">
+							Enter your site: 
+							<input type="url">
+						</div>
+						<div class="text">
+							<br>
+							Please enter your comment, complaint or wish :
+							<br>
+							<textarea rows="8" cols="60"></textarea>
+							<br>
+							Please note, your <mark id="mark">email address</mark> has to be correct.
+							<br>
+							<input id="submit" type="submit" value="Send comment">
+						</div>
+					</form>
 				</div>
-				<hr/>
-				<form class="form" action="contact.asp" target="_blank">
-					<div class="mail">
-						Your email address: 
-						<input type="email">
-					</div>
-					<br>
-					<div class="site">
-						Enter your site: 
-						<input type="url">
-					</div>
-					<div class="text">
-						<br>
-						Please enter your comment, complaint or wish :
-						<br>
-						<textarea rows="8" cols="60"></textarea>
-						<br>
-						Please note, your <mark id="mark">email address</mark> has to be correct.
-						<br>
-						<input id="submit" type="submit" value="Send comment">
-					</div>
-				</form>
-			</div>
 			<div class="footer">
 					<hr/>
 					<a href="contact.html"> Contact us. </a> All right reserved. Site developed by students of the Faculty of Electrical Engineering Sarajevo.
