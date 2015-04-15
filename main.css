@@ -34,16 +34,17 @@ body{
 }
 
 .logins a:hover{
-
 	background-color: gray;
 }
 
 
 #logo img{
+	display:block;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 #logo{
-	width: 49%;
 	margin: 0 auto;
 }
 
@@ -51,8 +52,9 @@ body{
 	display:block;
 	z-index: 10;
 	clear:both;
+	width: 80%;
 	font-family: Raleway;
-	width: 65%;
+
 	position: absolute;
 	left:18%;
 	margin-left:auto;
@@ -69,13 +71,15 @@ body{
 .nav li li{
 }
 
-.nav ul{
+.nav ul{	
+	width:100%;
 	display: block;
 	list-style: none;
 	
 }
 
 .nav ul li{
+	width: 17%;
 	display: block;
 	float: left;
 }
@@ -86,6 +90,7 @@ body{
 	margin-left:2%;
 	padding: 0;
 
+
 }
 
 .nav ul li:hover{
@@ -93,15 +98,17 @@ body{
 
 
 .nav ul li ul{
-	margin-left:0px;
-	padding-right: 0px;
 	padding-left:0px;
+	width:95%;
 }
 
 
 .nav ul li ul li{
+	width: 100%;
 	padding: 5px 5px;
 	margin-bottom: 2%;
+	margin-left:auto;
+	padding-right: auto;
 	float:none;
 	display:block;
 	background-color: rgba(211,211,211,0.4);
