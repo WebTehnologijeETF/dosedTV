@@ -15,7 +15,7 @@ function removeSubMenu(){
 	if(!check)
 	{
 		item=document.getElementById("navcol");
-		item.innerHTML="<li class=\"navmain\"><a href=\"recommended.html\">Recommended shows</a></li>";
+		item.innerHTML="<li class=\"navmain\"><a onClick=\"getXML()\">Recommended shows</a></li>";
 		item.parentNode.style.backgroundColor = 'rgba(211,211,211,0.0)'
 		check=true;
 	}
