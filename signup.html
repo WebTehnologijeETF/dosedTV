@@ -69,7 +69,11 @@
 						PERSONAL DATA
 					</div>
 					Full name:<input id="name" type="text"> <br>
-					Date of birth:<input id="birth" type="text"><img alt="error" id="epic5" src="pictures/error.png"><label id="epic5m">You have to be over 18 years old.</label>
+					Date of birth:<input id="birth" type="text"><img alt="error" id="epic5" src="pictures/error.png"><label id="epic5m">You have to be over 18 years old.</label><br>
+
+					Country:<input id="country" type="input" onblur="validateCountry()">
+					<img alt="error" id="epic6" src="pictures/error.png" onmouseenter="showError(this)" onmouseleave="hideError(this)">
+					<label id="epic6m">Invalid country.</label>
 					<br>
 					Gender:
 					<input id="mradio" type="radio" value="male" name="gender"> Male

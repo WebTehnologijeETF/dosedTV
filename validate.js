@@ -1,4 +1,30 @@
 
+function validateCountry(){
+	var country=document.getElementById("country").value
+
+	var req=new XMLHttpRequest();
+
+	req.onreadystatechange=function(){
+		if(req.readyState==4 && req.status==200){
+			var response=JSON.parse(req.responseText);
+			document.getElementById("country").value=response[0].name;
+			document.getElementById("epic6").style.visibility="hidden"
+		}
+		else if(req.status==404){
+			document.getElementById("epic6").style.visibility="visible"
+		}
+	}
+	var url="https://restcountries.eu/rest/v1/name/"+country;
+	req.open("GET",url,true);
+	req.send();
+}
+
+
+function checkCountry(){
+	validateCountry();
+	return(document.getElementById("epic6").style.visibility == "visible")
+}
+
 function showError(control){
 	if(control.id==="epic1"){
 		document.getElementById("epic1m").style.visibility="visible";
@@ -18,6 +44,10 @@ function showError(control){
 
 	if(control.id==="epic4"){
 		document.getElementById("epic4m").style.visibility="visible";
+	}
+
+	if(control.id==="epic6"){
+		document.getElementById("epic6m").style.visibility="visible";
 	}
 }
 
@@ -94,6 +124,6 @@ function validateUsername(){
 }
 
 function validateFields(){
-	return !(validateUsername() || validatePassword() || validateEmail());
+	return !(validateUsername() || validatePassword() || validateEmail() || checkCountry());
 
 }
