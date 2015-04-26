@@ -1,13 +1,13 @@
-function getXML()
+function replacePage(url)
 {
 	var req = new XMLHttpRequest();
-	var site="recommended.html";
 	req.onreadystatechange=function(){
 		if(req.readyState==4 && req.status==200){
-			console.log(req.responseXML.documentElement);
+			document.open();
+			document.write(req.responseText);
+			document.close();
 		}
 	}
-
-	req.open("GET",site,true);
+	req.open("GET",url,true);
 	req.send();
 }
