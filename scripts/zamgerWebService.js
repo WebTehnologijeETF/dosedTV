@@ -4,6 +4,10 @@ var optionsShowed=false;
 var optionsLabel="Name of the show <p>Description </p> <p>Picture </p>";
 var optionsInput="<input id='showName' type='text'> <input id='showDesc' type='text'> <input id='showPic' type='text'>";
 var clicked=-1;
+
+
+//            TABLE MANIPULATION            /////
+/////////////////////////////////////////////////
 function getEmptyTable(){
 	return "<tr class='weekdaysWS'><th class='odays'>TV Show</th><th class='odays'>Description</th><th class='odays'>Picture</th></tr>";
 }
@@ -32,15 +36,14 @@ function getRow(num,name,desc,url){
 function populateFields(row){
 	var row_strings=row.id.split('_')
 	show=shows[parseInt(row_strings[2])-1];
-	clicked=parseInt(row_strings[2]);
 	updatingOptions(parseInt(row_strings[2]));	
 	if(optionsShowed){
 		document.getElementById("showName").value=show.naziv;
 		document.getElementById("showDesc").value=show.opis;
-		document.getElementById("showPic").value=show.slika;		
+		document.getElementById("showPic").value=show.slika;
+		document.getElementById("showID").value=show.id;		
 	}
 }
-
 
 function populateTable(objects){
 	var table=document.getElementById("tableWS");
@@ -49,6 +52,13 @@ function populateTable(objects){
 		table.innerHTML+=getRow(i+1,objects[i].naziv,objects[i].opis,objects[i].slika);
 	table.innerHTML+="<tr class='blankrow'><td colspan='7'></td></tr>";
 }
+
+/////////////////////////////////////////////////
+/////////////////////////////////////////////////
+
+
+//           WWEB SERVICE FUNCTIONS         /////
+/////////////////////////////////////////////////
 
 function clearShows()
 {
@@ -61,23 +71,6 @@ function clearShows()
 		req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 		req.send("akcija=brisanje" + "&brindexa=16487&proizvod=" + JSON.stringify(shows[i]));
 	}
-}
-
-
-function validateName(){
-	name=document.getElementById("showName").value
-	return name.length>0;
-}
-
-function validateDesc(){
-	desc=document.getElementById("showDesc").value;
-	return desc.length>0
-}
-
-function validateUrl(){
-	url=document.getElementById("showPic").value;
-	urlregex=/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/;
-	urlregex.test(url.length);
 }
 
 
@@ -101,8 +94,8 @@ function deleteObject(id,name,desc,url){
 	var show={
 		id:id,
 		naziv:name,
-		opis:opis,
-		slika:slikaurl
+		opis:desc,
+		slika:url
 	};
 
 	var req=new XMLHttpRequest();
@@ -125,8 +118,8 @@ function updateObject(id,name,desc,url){
 	var show={
 		id:id,
 		naziv:name,
-		opis:opis,
-		slika:slikaurl
+		opis:desc,
+		slika:url
 	};
 
 	var req=new XMLHttpRequest();
@@ -142,7 +135,7 @@ function updateObject(id,name,desc,url){
 	req.send("akcija=promjena"+"&brindexa=16487"+"&proizvod="+JSON.stringify(show));
 }
 
-function post(name,desc,pic){
+function postObject(name,desc,pic){
 	show={
 		naziv:name,
 		opis:desc,
@@ -157,10 +150,32 @@ function post(name,desc,pic){
 			readObjects();
 		}
 	}
-
 	req.open("POST", zamgerurl,true);
 	req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	req.open("akcija=dodavanje"+"&brindexa=16487&proizvod="+JSON.stringify(show));
+	req.send("akcija=dodavanje"+"&brindexa=16487&proizvod="+JSON.stringify(show));
+}
+
+/////////////////////////////////////////////////
+/////////////////////////////////////////////////
+
+
+//////          FORM FUNCTIONS               /////
+/////////////////////////////////////////////////
+
+function validateName(){
+	name=document.getElementById("showName").value
+	return name.length>0;
+}
+
+function validateDesc(){
+	desc=document.getElementById("showDesc").value;
+	return desc.length>0
+}
+
+function validateUrl(){
+	url=document.getElementById("showPic").value;
+	urlregex=/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/;
+	return urlregex.test(url);
 }
 
 
@@ -168,12 +183,11 @@ function createShow(){
 	var name="";
 	var desc="";
 	var pic="";
-
 	if(validateName() && validateDesc() && validateUrl()){
 		name=document.getElementById("showName").value;
 		desc=document.getElementById("showDesc").value;
 		pic=document.getElementById("showPic").value
-		post(name,desc,pic);
+		postObject(name,desc,pic);
 		return true;
 	}
 	return false;
@@ -193,23 +207,9 @@ function updateShow(){
 		return true;
 	}
 	return false;
+	clearOptions();
 }
 
-function updateShow(){
-	var name="";
-	var desc="";
-	var pic="";
-
-	if(validateName() && validateDesc() && validateUrl()){
-		name=document.getElementById("showName").value;
-		desc=document.getElementById("showDesc").value;
-		pic=document.getElementById("showPic").value
-		id=document.getElementById("showID").value
-		updateObject(id,name,desc,pic);
-		return true;
-	}
-	return false;
-}
 
 function deleteShow(){
 	var name="";
@@ -225,7 +225,7 @@ function deleteShow(){
 		return true;
 	}
 	return false;
-
+	clearOptions();
 }
 
 
@@ -250,7 +250,7 @@ function addingOptions(){
 		document.getElementById("showOptionsLabel").innerHTML=optionsLabel;
 		document.getElementById("showOptionsInput").innerHTML=optionsInput;
 		options.style.display="block";
-		options.innerHTML+="<input type='button' value='Add show'>";
+		options.innerHTML+="<input type='button' onClick='createShow()' value='Add show'>";
 		optionsShowed=true;
 		if(clicked!=-1)
 			clicked=-1;
@@ -263,17 +263,23 @@ function addingOptions(){
 function updatingOptions(row_num){
 	var options=document.getElementById("showOptions");
 
-	if(!optionsShowed && clicked!=-1){
+	if(optionsShowed && clicked==row_num){
+		clearOptions();
+		clicked=-1;
+	}
+	else{
 		options.innerHTML="<div id='showOptionsLabel'></div> <div id='showOptionsInput'></div>";
 		options.style.display="block";
 		document.getElementById("showOptionsLabel").innerHTML=optionsLabel+"<p>ID</p>";
 		document.getElementById("showOptionsInput").innerHTML+=optionsInput+"<input id='showID' type='text' disabled>";
-		options.innerHTML+="<input type='button' value='Update show' style='padding:5px;'>";
-		options.innerHTML+="<input type='button' value='Delete show' style='padding:5px; margin-left:10px;'>";
+		options.innerHTML+="<input type='button' onClick='updateShow()' value='Update show' style='padding:5px;'>";
+		options.innerHTML+="<input type='button' onClick='deleteShow()' value='Delete show' style='padding:5px; margin-left:10px;'>";
 		optionsShowed=true;
+		clicked=row_num;
 	}
-	else if(optionsShowed && clicked==row_num){
-		clearOptions();
-		clicked=-1;
-	}
+	
 }
+
+
+/////////////////////////////////////////////////
+/////////////////////////////////////////////////
