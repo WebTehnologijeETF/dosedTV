@@ -6,7 +6,7 @@ function replacePage(url)
 	req.onreadystatechange=function(){
 		if(req.readyState==4 && req.status==200){
 			document.getElementById("content").innerHTML=req.responseText;
-			if(url=='allshows.html'){
+			if(url=='site_content/allshows.html'){
 				readObjects();
 			}
 		}
