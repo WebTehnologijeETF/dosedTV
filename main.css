@@ -678,6 +678,20 @@ th:last-child{
 
 
 
+.shows{
+	display: table;
+	border-spacing: 10px;
+	width: 100%;
+	font-family: Raleway;
+	position: relative;
+	margin-top: 16%;
+	margin-bottom: 5%;
+}
+
+
+
+
+
 
 .tablesWS{
 	width:80%;
@@ -756,6 +770,9 @@ th:last-child{
 
 
 
+#controlButton{
+	clear:both;
+}
 
 .trtwoWS td{
 	border-bottom:1px solid rgba(211,211,211,0.8);
@@ -777,8 +794,30 @@ th:last-child{
 	height:100px;
 }
 
+#showOptions{
+	width:40%;
+	display:none;
+	padding:10px;
+	background-color: rgba(211,211,211,0.35);
+	border-radius:10px;
+}
+#showOptionsLabel{
+	width:37%;
+	display:inline-block;
+	font-size:18px;
+	font-family: Raleway;
+}
+#showOptionsInput{
+	width:50%;
+	display:inline-block;
+	margin-left: 5%;
+}
 
 
+#showOptionsInput input[type=text]{
+	margin-bottom: 15px;
+	height: 18px;
+}
 
 
 

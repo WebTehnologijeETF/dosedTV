@@ -1,48 +1,4 @@
-<!DOCTYPE HTML> 
-<html>
-	<head>
-		<link href="main.css" rel="stylesheet">
-		<meta charset="UTF-8">
-		<title> dosedTV - socialize your watching </title>
-		<script src="show.js" type="text/javascript"></script>
-		<script src="spa.js" type="text/javascript"></script>
-		<script src="showService.js" type="text/javascript"></script>
-	</head>
-	<body>
-		<div class="logins">
-			<a onClick="replacePage('signup.html')">Log in </a>
-			<a onClick="replacePage('signup.html')">Sign up</a>
-		</div>
-		<div class="main">
-
-			<div id="logo">	
-				<img src="pictures/logotv.png" alt="Site logo"/>
-			</div>
-			<div class="nav">
-				<ul>
-					<li>
-						<ul>
-							<li class="navmain"><a onClick="replacePage('index.html')">News stories</a></li>
-						</ul>
-					</li>
-					<li>
-						<ul id="navcol" onmouseenter="addSubMenu(this)" onmouseleave="removeSubMenu(this)" >
-							<li class="navmain" ><a onClick="replacePage('recommended.html')">Recommended shows</a></li>
-						</ul>
-					</li>
-					<li>
-						<ul>
-							<li class="navmain"><a onClick="replacePage('episodes.html')">New episodes schedule</a></li>
-						</ul>
-					</li>
-					<li>
-						<ul>
-							<li class="navmain"><a href="#">Videos</a></li>
-						</ul>
-					</li>
-				</ul>
-			</div>
-			<div class="episodes">
+			<div class="shows">
 				<div class="headline">
 					New Episodes
 				</div>
@@ -54,12 +10,12 @@
 								<th class="odays">Description</th>
 								<th class="odays">Picture</th>
 						</tr>
-						<tr class="troneWS">
+						<tr onclick="updateShow()" class="troneWS">
 							<td class="nameWS">SUPERNATURAL</td>
 							<td class="descWS">Two brothers follow their father's footsteps as "hunters" fighting evil supernatural beings of many kinds including monsters, demons, and gods that roam the earth.</td>
 							<td><img class="imgWS" src="http://images5.fanpop.com/image/photos/30500000/Supernatural-supernatural-30545991-1680-1050.jpg"></td>
 						</tr>
-						<tr class="trtwoWS">
+						<tr onclick="updateShow()" class="trtwoWS">
 							<td class="nameWS">SUPERNATURAL</td>
 							<td class="descWS">Two brothers follow their father's footsteps as "hunters" fighting evil supernatural beings of many kinds including monsters, demons, and gods that roam the earth.</td>
 							<td><img class="imgWS" src="http://images5.fanpop.com/image/photos/30500000/Supernatural-supernatural-30545991-1680-1050.jpg"></td>
@@ -70,11 +26,12 @@
 					</table>
 				</div>
 			</div>
-			<input type="button" onClick="readObjects()" value="SEND">
-			<div class="footer">
-				<hr/>
-				<a onClick="replacePage('contact.html')"> Contact us. </a> All right reserved. Site developed by students of the Faculty of Electrical Engineering Sarajevo.
+			<input type="button" onClick="addingOptions()" value="Add new Show">
+			<div id="showOptions">
+				<div id="showOptionsLabel">
+				</div>
+				<div id="showOptionsInput">
+				</div>
 			</div>
-		</div>
-	</body>
-</html>
+
+			
