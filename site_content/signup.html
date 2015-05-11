@@ -3,43 +3,45 @@
 				Sign up
 			</div>
 			<hr/>
-			<form id="logindata" action="tobe.php" >					
+			<form id="logindata" action="signup_test.php" method="POST" >					
 				<div class="userdata">
 					USER DATA
 				</div>
-					Username: <input id="username" type="text" onblur="validateUsername()">
+		
+					Username: <input id="username" type="text" name="username" onblur="validateUsername()">
 					<img alt="error" id="epic1" src="pictures/error.png" onmouseenter="showError(this)" onmouseleave="hideError(this)">
 					<label id="epic1m">Names can only contain letters.</label><br>
 
-					Password:<input id="pass1" type="password">
+					Password:<input id="pass1" type="password" name="pass1">
 					<img alt="error" id="epic2" src="pictures/error.png" onmouseenter="showError(this)" onmouseleave="hideError(this)">
 					<label id="epic2m">Passwords do not match.</label><br>
 
-					Repeat password:<input id="pass2" type="password" onblur="validatePassword()">
+					Repeat password:<input id="pass2" type="password" name="pass2" onblur="validatePassword()">
 					<img alt="error" id="epic3" src="pictures/error.png" onmouseenter="showError(this)" onmouseleave="hideError(this)">
 					<label id="epic3m">Passwords do not match.</label><br>
 
-					email:<input id="email" type="email" onblur="validateEmail()">
+					email:<input id="email" type="text" name="email" onblur="validateEmail()">
 					<img alt="error" id="epic4" src="pictures/error.png" onmouseenter="showError(this)" onmouseleave="hideError(this)">
 					<label id="epic4m">Invalid email format.</label>
 					<br>
 					<div class="personaldata">
 						PERSONAL DATA
 					</div>
-					Full name:<input id="name" type="text"> <br>
-					Date of birth:<input id="birth" type="text"><img alt="error" id="epic5" src="pictures/error.png"><label id="epic5m">You have to be over 18 years old.</label><br>
+					Full name:<input id="name" name="name" type="text"> <br>
+					Date of birth:<input id="birth" name="date" type="date"><img alt="error" id="epic5" src="pictures/error.png"><label id="epic5m">You have to be over 18 years old.</label><br>
 
-					Country:<input id="country" type="input" onblur="validateCountry()">
+					Country:<input id="country" type="input" name="country" onblur="validateCountry()">
 					<img alt="error" id="epic6" src="pictures/error.png" onmouseenter="showError(this)" onmouseleave="hideError(this)">
 					<label id="epic6m">Invalid country.</label>
 					<br>
 					Gender:
-					<input id="mradio" type="radio" value="male" name="gender"> Male
+					<input id="mradio" type="radio" value="male" name="gender" > Male
 					<input type="radio" value="female" name="gender"> Female <br>
 					<br>
 					<div class="buttons">
-						<input type="submit" id="button" value="Create" onclick="return validateFields()">
-					</div>				
+						<input type="submit" id="button" value="Create" name="Send" onclick="">
+					</div>
+
 				</form>
 			</div>
 			
