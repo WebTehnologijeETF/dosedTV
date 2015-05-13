@@ -31,7 +31,7 @@
 					Date of birth:<input id="birth" name="date" type="date"><img alt="error" id="epic5" src="pictures/error.png"><label id="epic5m">You have to be over 18 years old.</label><br>
 
 					Country:<input id="country" type="input" name="country" onblur="validateCountry()">
-					<img alt="error" id="epic6" src="pictures/error.png" onmouseenter="showError(this)" onmouseleave="hideError(this)">
+					<input name="cvalid" type="hidden" value="invalid" id="cvalid">
 					<label id="epic6m">Invalid country.</label>
 					<br>
 					Gender:
@@ -39,7 +39,7 @@
 					<input type="radio" value="female" name="gender"> Female <br>
 					<br>
 					<div class="buttons">
-						<input type="submit" id="button" value="Create" name="Send" onclick="">
+						<input type="submit" id="button" value="Create" name="Send" onclick=" countryOk();">
 					</div>
 
 				</form>

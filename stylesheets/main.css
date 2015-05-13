@@ -2,7 +2,7 @@
 
 
 body{
-	background-image: url('http://i.imgur.com/GAxvad2.png');
+	background-image: url('../pictures/background.png');
 	background-size: cover;
 
 
@@ -610,7 +610,6 @@ th:last-child{
 
 .buttons{
 	clear: both;
-	padding-bottom: 100px;
 }
 
 #button{
@@ -821,3 +820,48 @@ th:last-child{
 
 
 
+
+
+
+
+#confirmForm{
+	width:70%;
+	background-color: rgba(211,211,211,0.2);
+	border-radius:15px;
+	padding: 5px;
+}
+
+#confirmForm p{
+	font-size: 17px;
+}
+
+#confirmHead{
+	font-family:Raleway;
+	font-size: 23px;
+	font-style: italic;
+	color: gray;
+}
+
+#confirmFoot{
+	font-family:Raleway;
+	font-size: 23px;
+	font-style: italic;
+	color: gray;
+}
+
+
+#confirm{
+	background-color: rgba(211,211,211,0.35);
+	padding:10px;
+	border-radius: 10px;
+	margin-top: 2%;
+	margin-bottom: 10%;
+	height:100px;
+	width:55%;
+	
+}
+
+#confirmButton{
+	height:50px;
+	width:150px;
+}

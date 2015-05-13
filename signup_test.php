@@ -39,17 +39,7 @@
 					</li>
 				</ul>
 			</div>
-			<div id="content">
-						<div class="signupform">
-			<div class="headline">
-				Sign up
-			</div>
-			<hr/>
-			<form id="logindata" action="signup_test.php" method="POST">					
-				<div class="userdata">
-					USER DATA
-				</div>
-				<?php
+							<?php
 					function validateUsername($username){
 						if(strlen($username)==0){
 							return false;
@@ -69,12 +59,7 @@
 					}
 
 					function validateEmail($mail){
-						if(strlen($mail)==0){
-							return false;
-						}
-						$pattern="~^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$~";
-						$valid=preg_match($pattern, $username, $match);
-						return $valid;
+						return filter_var($mail,FILTER_VALIDATE_EMAIL);
 					}
 
 					function validateCheckbox($value){
@@ -82,8 +67,57 @@
 						return true;
 					return false;
 					}
+
+					function validateCountry($value){
+						return (strcmp($value,'valid')==0);
+					}
+					function validateFields(){
+						$is_valid=(validateUsername($_POST['username']) && validatePass($_POST['pass1'],$_POST['pass2']) && validateEmail($_POST['email']) && validateCheckbox($_POST['gender']) && validateCountry($_POST['cvalid'])); 
+						return $is_valid;
+					}
+
+					function showConfirm(){						
+						if(validateFields())
+							return "block";
+						return "none";
+					}
+
+					function showForm(){
+						if(validateFields())
+							return "hidden";
+						return "visible";
+					}
 				?>
 				
+			<div id="content">
+			<div class="signupform">
+			<div class="headline">
+				Sign up
+			</div>
+			<hr/>
+			<form id="confirmForm" style='display:<?php echo showConfirm() ?>;' action="confirm.php" method="POST">
+				<div id="confirmHead">You entered the following information: </div>
+				<p>
+					Username: <?php echo $_POST['username'] ?><br>
+					Email: <?php echo $_POST['email'] ?><br>
+					Name: <?php echo $_POST['name'] ?><br>
+					Date of birth: <?php echo $_POST['date'] ?><br>
+					Country: <?php echo $_POST['country'] ?><br>
+					Gender: <?php echo $_POST['gender'] ?><br>
+					<input type="hidden" name="message" value='<?php echo "ACCOUNT DETAILS: \nUsername: ".$_POST["username"]."\n"."Email: ".$_POST["email"]."\n"."Name: ".$_POST["name"]."\n"."Birthday: ".$_POST["date"]."\n"."Country: ".$_POST["country"]."\n"."Gender: ".$_POST["gender"]."\n"; ?>'>
+				</p>
+				<div id="confirmFoot">Confirm the information:
+					<input type="button" name="toggleForm" value="Change information" onClick="toggleForm();">
+					<input type="submit" name="sendMail" value="Continue">
+				</div>
+			</form>
+
+
+			<form id="logindata" action="signup_test.php" method="POST" style="visibility: <?php echo showForm(); ?>;">					
+				<div class="userdata">
+					USER DATA
+				</div>
+
 				Username: <input id="username" type="text" name="username" onblur="validateUsername()" 
 				value="<?php if(isset($_REQUEST['username'])) print $_REQUEST['username']; else print $_POST['username']; ?>">
 				<?php
@@ -124,7 +158,7 @@
 				email:<input id="email" type="text" name="email" onblur="validateEmail()"
 					value="<?php if(isset($_REQUEST['email'])) print $_REQUEST['email']; else print $_POST['email']; ?>">
 				<?php
-					if(validateEmail($_POST['email']))	
+					if(strlen(validateEmail($_POST['email']))==0)	
 					echo '<img alt="error"  src="pictures/error.png"> <label id="epic4m" style="visibility:visible;" >Invalid email format.</label>';
 				?>
 					<br>
@@ -138,8 +172,11 @@
 
 					Country:<input id="country" type="input" name="country" onblur="validateCountry()"
 					value="<?php if(isset($_REQUEST['country'])) print $_REQUEST['country']; else print $_POST['country']; ?>">
-					<img alt="error" id="epic6" src="pictures/error.png" onmouseenter="showError(this)" onmouseleave="hideError(this)">
-					<label id="epic6m">Invalid country.</label>
+					<input name="cvalid" type="hidden" id="cvalid" value="<?php if(isset($_REQUEST['cvalid'])) print $_REQUEST['valid']; else print $_POST['cvalid'];?>">
+					<?php
+						if(!validateCountry($_POST['cvalid']))	
+							echo '<img alt="error" src="pictures/error.png"> <label id="epic4m" style="visibility:visible;" >Invalid country.</label>';
+					?>
 					<br>
 					Gender:
 					<input id="mradio" type="radio" value="male" name="gender" 
@@ -152,9 +189,11 @@
 					?>
 					<br> 
 					<div class="buttons">
-						<input type="submit" id="button" value="Create" name="Send" onclick="">
-					</div>					
-				</form>
+						<input type="submit" id="button" value="Create" name="Send" onclick="validateCountry()">
+					</div>				
+			</form>
+				
+				
 			</div>
 			
 			</div>

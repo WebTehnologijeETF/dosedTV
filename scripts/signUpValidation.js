@@ -1,4 +1,4 @@
-
+var country_ok=false;
 function validateCountry(){
 	var country=document.getElementById("country").value
 
@@ -8,10 +8,13 @@ function validateCountry(){
 		if(req.readyState==4 && req.status==200){
 			var response=JSON.parse(req.responseText);
 			document.getElementById("country").value=response[0].name;
-			document.getElementById("epic6").style.visibility="hidden"
+			document.getElementById("cvalid").value="valid";
+			console.log(document.getElementById("cvalid"));
+			country_ok=true;
 		}
 		else if(req.status==404){
-			document.getElementById("epic6").style.visibility="visible"
+			document.getElementById("cvalid").value="invalid";
+			country_ok=false;
 		}
 	}
 	var url="https://restcountries.eu/rest/v1/name/"+country;
@@ -19,6 +22,17 @@ function validateCountry(){
 	req.send();
 }
 
+function countryOk(){
+	return country_ok;
+}
+
+function toggleForm(){
+	display=document.getElementById('logindata').style.display;
+	if(display=="none")
+		document.getElementById('logindata').style.display="block";
+	else
+		document.getElementById('logindata').style.display="none";
+}
 
 function checkCountry(){
 	validateCountry();
