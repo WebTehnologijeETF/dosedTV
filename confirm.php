@@ -51,8 +51,9 @@
 				$sendgrid = new SendGrid("amuslija", "amuslija16487");
 				$email    = new SendGrid\Email();
 
-				$email->addTo("core.qr@gmail.com")
+				$email->addTo("amuslija1@etf.unsa.ba")
 				      ->setFrom("muslija.adnan@gmail.com")
+				      ->setCc("vljubovic@etf.unsa.ba")
 				      ->setSubject("dosedTV Account Details")
 				      ->setText($_POST['message']);
 

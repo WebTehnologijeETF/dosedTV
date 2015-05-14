@@ -438,7 +438,7 @@ th:last-child{
 .news{
 	margin-top:17%;
 	border-spacing: 10px;
-	width: 80%;
+	width: 90%;
 	position: relative;
 }
 
@@ -450,6 +450,7 @@ th:last-child{
 	display: inline-block;
 	width: 30%;
 	font-family: Raleway;
+	margin: 3px;
 	padding: 10px 10px 10px 10px;
 	border-radius: 15px 15px 15px 15px;
 	background-color: rgba(211,211,211,0.2);
@@ -864,4 +865,14 @@ th:last-child{
 #confirmButton{
 	height:50px;
 	width:150px;
+}
+
+#selectedArticle{
+	font-family:Raleway;
+}
+
+#newsimg{
+	width:200px;
+	height:200px;
+	margin: 10px;
 }

@@ -10,6 +10,17 @@ function addSubMenu(){
 
 }
 
+function test(){
+	console.log("test");
+	visibility=document.getElementById('logindata').style.visibility;
+	if(visibility=="hidden"){
+		document.getElementById('logindata').style.visibility="visible";
+	}
+	else{
+		document.getElementById('logindata').style.visibility="hidden";
+	}
+}
+
 
 function removeSubMenu(){
 	if(!check)

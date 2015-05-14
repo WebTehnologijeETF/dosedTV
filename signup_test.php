@@ -104,10 +104,10 @@
 					Date of birth: <?php echo $_POST['date'] ?><br>
 					Country: <?php echo $_POST['country'] ?><br>
 					Gender: <?php echo $_POST['gender'] ?><br>
-					<input type="hidden" name="message" value='<?php echo "ACCOUNT DETAILS: \nUsername: ".$_POST["username"]."\n"."Email: ".$_POST["email"]."\n"."Name: ".$_POST["name"]."\n"."Birthday: ".$_POST["date"]."\n"."Country: ".$_POST["country"]."\n"."Gender: ".$_POST["gender"]."\n"; ?>'>
+					<input type="hidden" name="message" value='<?php echo "ACCOUNT DETAILS: \n Username: ".$_POST["username"]."\n"."Email: ".$_POST["email"]."\n"."Name: ".$_POST["name"]."\n"."Birthday: ".$_POST["date"]."\n"."Country: ".$_POST["country"]."\n"."Gender: ".$_POST["gender"]."\n"; ?>'>
 				</p>
 				<div id="confirmFoot">Confirm the information:
-					<input type="button" name="toggleForm" value="Change information" onClick="toggleForm();">
+					<input type="button" name="toggleForm" value="Change information" onClick="test()">
 					<input type="submit" name="sendMail" value="Continue">
 				</div>
 			</form>
@@ -119,7 +119,7 @@
 				</div>
 
 				Username: <input id="username" type="text" name="username" onblur="validateUsername()" 
-				value="<?php if(isset($_REQUEST['username'])) print $_REQUEST['username']; else print $_POST['username']; ?>">
+				value="<?php if(isset($_REQUEST['username'])) print htmlEntities($_REQUEST['username'], ENT_QUOTES); else print htmlEntities($_POST['username'], ENT_QUOTES); ?>">
 				<?php
 					if(!validateUsername($_POST['username']))	
 					echo '<img alt="error" src="pictures/error.png"> <label id="epic1m" style="visibility:visible;" >Incorrect username format.</label>';
@@ -127,7 +127,7 @@
 				<br>
 				
 				Password:<input id="pass1" type="password" name="pass1"
-				value="<?php if(isset($_REQUEST['pass1'])) print $_REQUEST['pass1']; else print $_POST['pass1']; ?>">
+				value="<?php if(isset($_REQUEST['pass1'])) print htmlEntities($_REQUEST['pass1'],ENT_QUOTES); else print htmlEntities($_POST['pass1'],ENT_QUOTES); ?>">
 				<?php 
 				if(validatePass($_POST['pass1'],$_POST['pass2'])!=1){ 
 					print '<img alt="error" src="pictures/error.png">';
@@ -142,7 +142,7 @@
 				<br>
 
 				Repeat password:<input id="pass2" type="password" name="pass2" onblur="validatePassword()"
-				value="<?php if(isset($_REQUEST['pass2'])) print $_REQUEST['pass2']; else print $_POST['pass2']; ?>">
+				value="<?php if(isset($_REQUEST['pass2'])) print htmlEntities($_REQUEST['pass2'],ENT_QUOTES); else print htmlEntities($_POST['pass2'],ENT_QUOTES); ?>">
 				<?php 
 				if(validatePass($_POST['pass1'],$_POST['pass2'])!=1){ 
 					print '<img alt="error" src="pictures/error.png">';
@@ -156,7 +156,7 @@
 				?><br>
 
 				email:<input id="email" type="text" name="email" onblur="validateEmail()"
-					value="<?php if(isset($_REQUEST['email'])) print $_REQUEST['email']; else print $_POST['email']; ?>">
+					value="<?php if(isset($_REQUEST['email'])) print htmlEntities($_REQUEST['email'],ENT_QUOTES); else print htmlEntities($_POST['email'],ENT_QUOTES); ?>">
 				<?php
 					if(strlen(validateEmail($_POST['email']))==0)	
 					echo '<img alt="error"  src="pictures/error.png"> <label id="epic4m" style="visibility:visible;" >Invalid email format.</label>';
@@ -166,13 +166,13 @@
 						PERSONAL DATA
 					</div>
 					Full name:<input id="name" name="name" type="text"
-					value="<?php if(isset($_REQUEST['name'])) print $_REQUEST['name']; else print $_POST['name']; ?>"><br>
+					value="<?php if(isset($_REQUEST['name'])) print htmlEntities($_REQUEST['name'],ENT_QUOTES); else print htmlEntities($_POST['name'],ENT_QUOTES); ?>"><br>
 					Date of birth:<input id="birth" type="date" name='date' 
-					value="<?php if(isset($_REQUEST['date'])) print $_REQUEST['date']; else print $_POST['date']; ?>"><img alt="error" id="epic5" src="pictures/error.png"><label id="epic5m">You have to be over 18 years old.</label><br>
+					value="<?php if(isset($_REQUEST['date'])) print htmlEntities($_REQUEST['date'],ENT_QUOTES); else print htmlEntities($_POST['date'],ENT_QUOTES); ?>"><img alt="error" id="epic5" src="pictures/error.png"><label id="epic5m">You have to be over 18 years old.</label><br>
 
 					Country:<input id="country" type="input" name="country" onblur="validateCountry()"
-					value="<?php if(isset($_REQUEST['country'])) print $_REQUEST['country']; else print $_POST['country']; ?>">
-					<input name="cvalid" type="hidden" id="cvalid" value="<?php if(isset($_REQUEST['cvalid'])) print $_REQUEST['valid']; else print $_POST['cvalid'];?>">
+					value="<?php if(isset($_REQUEST['country'])) print htmlEntities($_REQUEST['country'],ENT_QUOTES); else print htmlEntities($_POST['country'],ENT_QUOTES); ?>">
+					<input name="cvalid" type="hidden" id="cvalid" value="<?php if(isset($_REQUEST['cvalid'])) print htmlEntities($_REQUEST['valid'],ENT_QUOTES); else print htmlEntities($_POST['cvalid'],ENT_QUOTES);?>">
 					<?php
 						if(!validateCountry($_POST['cvalid']))	
 							echo '<img alt="error" src="pictures/error.png"> <label id="epic4m" style="visibility:visible;" >Invalid country.</label>';

@@ -27,11 +27,7 @@ function countryOk(){
 }
 
 function toggleForm(){
-	display=document.getElementById('logindata').style.display;
-	if(display=="none")
-		document.getElementById('logindata').style.display="block";
-	else
-		document.getElementById('logindata').style.display="none";
+	
 }
 
 function checkCountry(){
