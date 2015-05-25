@@ -44,73 +44,38 @@
 					<div class="headline">News stories</div>
 					<hr/>
 		<?php 
-			function get_news(){
-				$dir="news";
-				$files=scandir("$dir");
-				$txt_files=array();
-				foreach ($files as &$file){
-					if(strlen($file)>3){
-						if(strcmp(substr($file,-4),'.txt')==0){
-							array_push($txt_files,"news/".$file);
-						}
-					}
-				}
-
-				$i=0;
-				$j=0;
-				$break=false;
-				$short="";
-				$long="";
-				$news=array();
-				foreach($txt_files as &$file){
-					$content=file($file);
-
-					foreach ($content as $line_num => $line) {
-					    if($line_num==0){
-					    	$date=$line;
-					    }
-					    if($line_num==1){
-					    	$author=$line;
-					    }
-					    if($line_num==2){
-					    	$title=$line;
-					    }
-					    if($line_num==3){
-					    	$link=$line;
-					    }
-					    if(strcmp($line,"--\n")==0){
-					    	$break=true;
-					    	continue;
-					    }
-					    if($line_num>3 && !$break){
-					    	$short.=$line."\n";
-					    }
-					    if($line_num>3 && $break){
-					    	$long.=$line."\n";
-					    }
-					}
-				array_push($news,array('date' => $date, 'author' => $author, 'title' => $title, 'link' => $link, 'short' => $short, 'long' => $long));
-				}
-				return $news;
+			function get_news_db(){
+				$query = new PDO("mysql:dbname=doseddb;host=localhost;charset=utf8", "dosed", "pass");
+			    $query->exec("set names utf8");
+			    $result = $query->query("select id, UNIX_TIMESTAMP(date) time, title, author, headline, article, url from articles order by date desc");
+			    if (!$result) {
+			         $error = $query->errorInfo();
+			         print "SQL error: " . $error[2];
+			        exit();
+			    }
+			    return $result;
 			}
-			$try="site_content/article.html";
-			$news=get_news();
-			for($i=0;$i<count($news);$i++){
+
+			$articles=get_news_db();
+			$i=0;
+			foreach($articles as $news){
 				if($i%3 == 0){
 					print '<div class="articles">';
 				}
 				$num=($i%3)+1;
 				print '<div class="article'.$num.'" >';
-				print '<img src="'.$news[$i]['link'].'" alt="Site logo"/>';
-				print '<div class="date">'.$news[$i]['date'].'</div>'; 
-				print '<h2>'.$news[$i]['title'].'</h2>';
-				print '<p>'.$news[$i]['short'].'<p>';
-				print "<a href='#' onClick='replacePage(\"".$try."\",".$i.")'> Read more </a>";
-				print '<div class="author">'.$news[$i]['author'].'</div></div>';
+				print '<img src="'.$news['url'].'" alt="Site logo"/>';
+				print '<div class="date">'.date("d.m.Y. | h:i", $news['time']).'</div>'; 
+				print '<h2>'.$news['title'].'</h2>';
+				print '<p>'.$news['headline'].'<p>';
+				print "<a href='#' onClick=\'replacePage('site_content/article.html',".$i.")'> Read more </a>";
+				print '<div class="author" >'.$news['author'].'</div></div>';
 				if(($i+1)%3 == 0){
 					print '</div><br><br>';
 				}
+				$i++;
 			}
+			
 		?>
 		</div>
 		</div>

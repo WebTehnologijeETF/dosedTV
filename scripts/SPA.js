@@ -31,8 +31,8 @@ function setNews(index){
 			document.getElementById("newstitle").innerHTML=article['title'];
 			document.getElementById("newsauthor").innerHTML=article['author'];
 			document.getElementById("newsdate").innerHTML=article['date'];
-			document.getElementById("newsshort").innerHTML=article['short'];
-			document.getElementById("newslong").innerHTML=article['long'];
+			document.getElementById("newsshort").innerHTML=article['headline'];
+			document.getElementById("newslong").innerHTML=article['article'];
 		}
 	}
 

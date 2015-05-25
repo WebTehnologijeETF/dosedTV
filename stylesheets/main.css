@@ -52,11 +52,8 @@ body{
 	display:block;
 	z-index: 10;
 	clear:both;
-	width: 80%;
+	width: 100%;
 	font-family: Raleway;
-
-	position: absolute;
-	left:18%;
 	margin-left:auto;
 	margin-right: auto;
 }
@@ -70,27 +67,30 @@ body{
 }
 .nav li li{
 }
+.main{
+	display: 1px solid black;
+}
+
 
 .nav ul{	
 	width:100%;
+	margin-right: 150px;
 	display: block;
 	list-style: none;
 	
 }
 
 .nav ul li{
-	width: 17%;
+	width: 18%;
 	display: block;
 	float: left;
+	margin-right: 30px;
 }
 
 
 .nav ul li {
 	border-radius: 8px;	
 	margin-left:2%;
-	padding: 0;
-
-
 }
 
 .nav ul li:hover{
@@ -104,34 +104,37 @@ body{
 
 
 .nav ul li ul li{
-	width: 100%;
+	width: 120%;
 	padding: 5px 5px;
 	margin-bottom: 2%;
 	margin-left:auto;
 	padding-right: auto;
 	float:none;
 	display:block;
-	background-color: rgba(211,211,211,0.4);
+	background-color: rgba(211,211,211,1);
 	position:relative;
 }
 
 .nav ul li ul li:hover{
-	background-color: rgba(211,211,211,0.8)
+	background-color: rgba(211,211,211,0.2)
 }
 
 #navcol {
 }
 
 
-
+.nav li ul {
+	z-index: 100;
+}
 
 .nav a{
 	text-decoration: none;
-	font-size: 20px;
+	font-size: 115%;
 }
 
 
 .headline{
+	padding-top: 1%;
 	font-size: 35px;
 	font-family: Hind;
 	font-style: italic;
@@ -153,7 +156,9 @@ body{
 
 
 
-
+#content{
+	margin-top: 22%;
+}
 
 
 
@@ -350,7 +355,6 @@ th:last-child{
 
 
 .recommended{
-	padding-top:10%;
 	border-spacing: 10px;
 	width: 80%;
 	margin-top: 7%;
@@ -436,7 +440,6 @@ th:last-child{
 
 
 .news{
-	margin-top:17%;
 	border-spacing: 10px;
 	width: 90%;
 	position: relative;
@@ -508,7 +511,6 @@ th:last-child{
 	width: 80%;
 	font-size: 15px;
 	font-style: italic;
-	margin-top:16%;
 }
 
 #logindata{
