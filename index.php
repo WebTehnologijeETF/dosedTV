@@ -19,7 +19,7 @@
 				<ul>
 					<li>
 						<ul>
-							<li onClick="replacePage('site_content/news.html')" class="navmain"><a href="#" >News stories</a></li>
+							<li onClick="replacePage('site_content/news.php')" class="navmain"><a href="#" >News stories</a></li>
 						</ul>
 					</li>
 					<li>
@@ -68,7 +68,7 @@
 				print '<div class="date">'.date("d.m.Y. | h:i", $news['time']).'</div>'; 
 				print '<h2>'.$news['title'].'</h2>';
 				print '<p>'.$news['headline'].'<p>';
-				print "<a href='#' onClick=\'replacePage('site_content/article.html',".$i.")'> Read more </a>";
+				print "<a href='#' onClick=replacePage('site_content/article.html',".$news['id'].") > Read more </a>";
 				print '<div class="author" >'.$news['author'].'</div></div>';
 				if(($i+1)%3 == 0){
 					print '</div><br><br>';

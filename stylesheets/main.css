@@ -878,3 +878,54 @@ th:last-child{
 	height:200px;
 	margin: 10px;
 }
+
+#commentSection{
+	font-family: Raleway;
+	float: left;
+	width: 50%;
+	display:none;
+	height: 250px;
+	overflow-y: scroll;	
+}
+
+.comment{
+	background-color: rgba(211,211,211,0.2);
+	word-wrap: break-word;
+	width: 95%;
+	border-radius: 4px;
+	margin-top: 2%;
+	margin-bottom: 2%;
+}
+
+.commentHeadline{
+	padding-top: 5%;
+	font-size: 25px;
+	font-family: Hind;
+	font-style: italic;
+	color: gray;
+
+}
+
+#commentInput{
+	font-family: Raleway;
+	float: left;
+	margin-left: 5%;
+	width: 45%;
+	background-color: rgba(211,211,211,0.2);
+}
+
+.tbLabel {
+
+    width: 30%;
+    float: left;
+    text-align: right;
+}
+.tbInput {
+    width: 65%;
+    margin-left: 10px;
+    float:left;
+}
+
+textarea{
+	resize:none;
+}
