@@ -6,9 +6,9 @@
 		<title> dosedTV - socialize your watching </title>
 	</head>
 	<body>
-		<div class="logins">
-			<a onClick="replacePage('site_content/signup.html')">Log in </a>
-			<a onClick="replacePage('site_content/signup.html')">Sign up</a>
+		<div class="logins" id="loginform">
+			<a onClick="showLoginForm()" id="loginbtn">Log in </a>
+			<a onClick="replacePage('site_content/signup.html')" id="signupbtn">Sign up</a>
 		</div>
 		<div class="main">
 			<div id="logo">	
@@ -39,7 +39,7 @@
 				</ul>
 			</div>
 			<div id="content">
-				<div class="signupform">
+			<div class="signupform">
 			<div class="headline">
 				Account created
 			</div>

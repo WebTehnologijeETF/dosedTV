@@ -52,7 +52,7 @@
 			function get_news_db(){
 				//echo "select id, UNIX_TIMESTAMP(date) time, title, author, headline, article, url from articles where id=".$_GET['news_id'].";";
 				$conn=new PDO("mysql:dbname=doseddb;host=localhost;charset=utf8", "dosed", "pass");
-				$stmt=$conn->prepare("select id, UNIX_TIMESTAMP(date) time, title, author, headline, article, url from articles where id= :id");
+				$stmt=$conn->prepare("select id, date as time, title, author, headline, article, url from articles where id= :id");
 			   	$stmt->execute(array(':id' => $_GET['news_id']));
 				$result = $stmt->fetch(PDO::FETCH_ASSOC);
 			    return $result;

@@ -40,11 +40,15 @@ body{
 
 #logo img{
 	display:block;
+	z-index: 1000;
+	margin-right:auto;
 	margin-left: auto;
-	margin-right: auto;
 }
 
 #logo{
+	z-index: 100;
+	margin-right:auto;
+	margin-left: auto;
 	margin: 0 auto;
 }
 
@@ -64,11 +68,11 @@ body{
 
 .navmain{
 	display:block;
+	z-index: 30;
 }
 .nav li li{
 }
 .main{
-	display: 1px solid black;
 }
 
 
@@ -158,6 +162,7 @@ body{
 
 #content{
 	margin-top: 22%;
+	font-family: Raleway;
 }
 
 
@@ -897,6 +902,17 @@ th:last-child{
 	margin-bottom: 2%;
 }
 
+
+.article{
+	background-color: rgba(211,211,211,0.2);
+	word-wrap: break-word;
+	width: 95%;
+	border-radius: 4px;
+	margin-top: 2%;
+	margin-bottom: 2%;
+	cursor: pointer;
+}
+
 .commentHeadline{
 	padding-top: 5%;
 	font-size: 25px;
@@ -928,4 +944,37 @@ th:last-child{
 
 textarea{
 	resize:none;
+}
+
+#commentButton{
+	width: 150px;
+	height: 50px;
+	margin-right: 10%;
+	float: right;
+}
+#articleList{
+	width:45%;
+	height: 400px;
+	overflow-y: scroll;	
+	float: left;
+	margin-left: 10%;
+
+}
+
+#optionsList{
+	float:left;
+}
+#loginform{
+	background-color: rgba(211,211,211,0.2);
+	font-family: Raleway;
+	padding: 10px;
+	border-radius: 10px;
+}
+
+#articleForm{
+	float:right;
+	background-color: rgba(211,211,211,0.2);
+	padding: 10px;
+	border-radius: 10px;
+	display:none;
 }

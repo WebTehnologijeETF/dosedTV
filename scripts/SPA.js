@@ -23,7 +23,7 @@ function replacePage(url,index)
 
 function setComments(index){
 	var req = new XMLHttpRequest();
-	url="getComments.php?news_id=";
+	url="php/getComments.php?news_id=";
 
 	req.onreadystatechange=function(){
 		if(req.readyState==4 && req.status==200){
@@ -35,9 +35,10 @@ function setComments(index){
 				document.getElementById('commentLink').innerHTML="No comments";
 			}
 			else{
+				if(document.getElementById('commentLink').innerHTML!="Comments");
 				document.getElementById('commentLink').innerHTML="Show "+comments.length+" comments";	
 				for(var i=0;i<comments.length;i++){
-					section.innerHTML+="<div class='comment'>Author: "+comments[i]['author']+"<br>"+comments[i]['time']+"<br>"+comments[i]['comment']+"<br><hr></div>";
+					section.innerHTML+="<div class='comment'>Author: "+comments[i]['author']+"<br>"+"Email:<a href='mailto:"+comments[i]['email']+"'>"+comments[i]['email']+"</a><br>"+comments[i]['time']+"<br>"+comments[i]['comment']+"<br><hr></div>";
 				}
 			}
 		}
@@ -48,16 +49,17 @@ function setComments(index){
 
 function setNews(index){
 	var req = new XMLHttpRequest();
-	url="read.php?news_id=";
+	url="php/read.php?news_id=";
 	req.onreadystatechange=function(){
 		if(req.readyState==4 && req.status==200){
 			var article=JSON.parse(req.responseText);
 			document.getElementById("newsimg").src=article['url'];
 			document.getElementById("newstitle").innerHTML=article['title'];
 			document.getElementById("newsauthor").innerHTML=article['author'];
-			document.getElementById("newsdate").innerHTML=article['date'];
+			document.getElementById("newsdate").innerHTML=article['time'];
 			document.getElementById("newsshort").innerHTML=article['headline'];
 			document.getElementById("newslong").innerHTML=article['article'];
+			document.getElementById("articleid").value=article['id'];
 		}
 	}
 
@@ -68,4 +70,75 @@ function setNews(index){
 function toggleComments(){
 	document.getElementById("commentSection").style.display="block";
 	document.getElementById('commentLink').innerHTML="Comments";
+}
+
+function sendComment(){
+	var req = new XMLHttpRequest();
+	var url = "php/postComments.php";
+	var name=document.getElementById("commenterName").value;
+	var email=document.getElementById("commenterEmail").value;
+	var comment=document.getElementById("commenterComment").value;
+	var article=document.getElementById("articleid").value;
+
+	req.onreadystatechange=function(){
+		if(req.readyState===4 && req.status===200){
+			setComments(article);
+			alert("Email sent");
+		}
+	}
+
+	req.open("POST",url,true);
+	req.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+	req.send("name="+name+"&email="+email+"&comment="+comment+"&article="+article);
+	document.getElementById("commenterName").value="";
+	document.getElementById("commenterEmail").value="";
+	document.getElementById("commenterComment").value="";
+}
+
+
+function showLoginForm(){
+	var form=document.getElementById("loginform");
+	form.innerHTML="";
+	form.innerHTML='<form action="admin.php" method="POST"><div><div class="tbLabel">Username</div><div class="tbInput"><input size="10" type="text" name="username"></div></div><div><div class="tbLabel">Password</div><div class="tbInput"><input size="10" type="password" name="password" ></div></div><input type="submit" name="login" value="Login"></form>';
+
+}
+
+function getAllArticles(){
+	var req=new XMLHttpRequest();
+	var url="php/getArticles.php";
+
+	req.onreadystatechange=function(){
+		if(req.readyState===4 && req.status===200){
+			var articles=JSON.parse(req.responseText);
+			var list=document.getElementById("articleList");
+			for(var i=0;i<articles.length;i++){
+				list.innerHTML+="<div class='article' id='article"+articles[i]['id']+"' onClick='showArticle(this)'>TITLE: "+articles[i]['title']+"<br>"+"AUTHOR: "+articles[i]['author']+"<br>"+"DATE: "+articles[i]['time']+"<br>"+"HEADLINE:<br>"+articles[i]['headline']+"<br>"+"ARTICLE:<br>"+articles[i]['article']+"<br><br>"+"PICTURE: "+articles[i]['url']+"<br>";articles
+			}
+		}
+	}
+
+	req.open("GET",url,true);
+	req.send();
+}
+
+function showArticle(item){
+	var element_id=item.id;
+	var id=parseInt(element_id.replace('article',''));
+	var req=new XMLHttpRequest();
+	var url="php/getArticles.php?";
+
+	req.onreadystatechange=function(){
+		if(req.readyState===4 && req.status===200){
+			var article=JSON.parse(req.responseText);
+			document.getElementById('articleForm').style.display="block";
+			document.getElementById('titlebox').value=article[0]['title'];
+			document.getElementById('authorbox').value=article[0]['author'];
+			document.getElementById('headlinebox').value=article[0]['headline'];
+			document.getElementById('articlebox').value=article[0]['article'];
+			document.getElementById('picturebox').value=article[0]['url'];
+		}
+	}
+
+	req.open("GET",url+"id="+id,true);
+	req.send();
 }
