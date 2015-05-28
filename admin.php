@@ -5,37 +5,50 @@
 		<meta charset="UTF-8">
 		<title> dosedTV - socialize your watching </title>
 	</head>
-	<body onload="getAllArticles()">
+	<body onload="">
 		<?php
 			session_start();
-  
- 		    $veza = new PDO("mysql:dbname=wt8;host=localhost;charset=utf8", "wt8user", "wt8pass");
-	     	$veza->exec("set names utf8");
+			if(isset($_SESSION['username']) && isset($_SESSION['password'])){
+				$username=$_SESSION['username'];
+				$password=$_SESSION['password'];
+			}
+  			else if(isset($_POST['username']) && isset($_POST['password'])){
+	 		    $conn=new PDO("mysql:dbname=doseddb;host=localhost;charset=utf8", "dosed", "pass");
+			    $username=$_POST['username'];
+			    $password=$_POST['password'];
+			    $stmt=$conn->prepare('select username, password from users where username=:username');
+			   	$stmt->execute(array(':username' => $username));
+			    $result=$stmt->fetch(PDO::FETCH_ASSOC);
+				$check=crypt($_POST['password'],$result['password'])===$result['password'];
+				$check;
+			    if(!$result || !$check){
+			    	echo "<h1>Korisnik ne postoji</h1>";
+			    }
+			    else{
+					$_SESSION['username']=$username;
+				    $_SESSION['password']=$password;
+				}
+		    }
+		   
+		    if(strcmp($_POST['login'],'Logout')==0) {
+		    	session_unset();
+		    }
 
-    		if (isset($_SESSION['username'])){
-        		$username = $_SESSION['username'];
-        		$password = $_SESSION['password'];
-      		}
-    		else if (isset($_REQUEST['username'])) {
-		        $username = $_REQUEST['username'];
-		        $password = $_REQUEST['password'];
-		        $stmt = $veza->prepare('SELECT * from users where username= :user and password=:pass');
-		        $stmt->execute(array(':user' => $username, ':pass' => $password));
-		        $result = $stmt->fetch(PDO::FETCH_ASSOC);
-		        if(!$result){
-		          echo "<h1>Korisnik ne postoji</h1>";
-		        }
-		        $_SESSION['username']=$username;
-		        $_SESSION['password']=$password;
-      		}
-
-		    if(isset($_POST['logout'])){
-        		session_unset();
-      		}
 		?>	
 		<div class="logins" id="loginform">
-			<a onClick="showLoginForm()" id="loginbtn">Log in </a>
-			<a onClick="replacePage('site_content/signup.html')" id="signupbtn">Sign up</a>
+		<?php
+			if(isset($_SESSION['username'])){
+				echo "<form action='admin.php' method='POST' id='logoutform'><a href='admin.php'> Panel </a>";
+				echo "<a onClick='logoutForm()'> Logout </a><input type='hidden' name='login' value='Logout'></form>";
+				echo "<input type='hidden' id='usernameField' value='".$_SESSION['username']."' >";
+			}
+			else{
+				echo'
+				<a onClick="showLoginForm()" id="loginbtn">Log in </a>
+				<a onClick="replacePage("site_content/signup.html")" id="signupbtn">Sign up</a>';
+			}
+
+		?>
 		</div>
 		<div class="main">
 			<div id="logo">	
@@ -45,7 +58,7 @@
 				<ul>
 					<li>
 						<ul>
-							<li onClick="replacePage('site_content/news.html')" class="navmain"><a href="#" >News stories</a></li>
+							<li onClick="replacePage('site_content/news.php')" class="navmain"><a href="#" >News stories</a></li>
 						</ul>
 					</li>
 					<li>
@@ -65,54 +78,39 @@
 					</li>
 				</ul>
 			</div>
-			<div id="content">
+			<?php
+			$panel='<div id="content">
 			<div class="headline">Panel</div>
 			<hr/>
 				<div class="adminPanel">
 					<ul id="optionsList">
-						<li>Articles</li>
-						<li>Users</li>
+						<li onClick="getAllArticles()">ARTICLES</li>
+						<li onClick="getAllComments()">COMMENTS</li>
+						<li onClick="getAllUsers()">USERS</li>
 					</ul>
 					<div id="articleOptions">
-						<div id="articleList">
+						<div id="List">
 						</div>
-						<div id="commentSection">
-						</div>
-						<div id="articleForm">
-							<div>
-								<div class="tbLabel">Title</div>
-								<div class="tbInput"><input type="text" name="title" id="titlebox"></div>
-							</div>
-							<div>
-								<div class="tbLabel">Author</div>
-								<div class="tbInput"><input type="text" name="author" id="authorbox"></div>
-							</div>
-							<div>
-								<div class="tbLabel">Headline</div>
-								<div class="tbInput"><textarea rows="4" cols="31" name="headline" id="headlinebox"></textarea></div>
-							</div>
-							<div>
-								<div class="tbLabel">Article</div>
-								<div class="tbInput"><textarea rows="4" cols="31" name="article" id="articlebox"></textarea></div>
-							</div>
-							<div>
-								<div class="tbLabel">Picture URL</div>
-								<div class="tbInput"><input type="text" name="url" id="picturebox"></div>
-							</div>
-							<input type='hidden' value='-1' name='id'>
-							<div>
-								<input class="actionButton" type='button' name="action" value='delete'>
-								<input type='button' class="actionButton" name="action" value='update'>
-								<input type='button' name="action" class="actionButton" value='create'>
-							</div>
+						<div id="Form" >
 						</div>
 					</div>
 					<div id="userOptions">
 					</div>
-				</div>
-				<div class="footer">
-				<hr/>
-				<a href="#" onClick="replacePage('site_content/contact.html')"> Contact us. </a> All right reserved. Site developed by students of the Faculty of Electrical Engineering Sarajevo.
+				</div>';
+
+			if(isset($_SESSION['username']))
+				echo $panel;
+			else{
+				echo '<div id="content">
+					<div class="headline">Panel</div>
+					<hr/>
+					<h1> PLEASE LOG IN AS AN ADMINISTATOR</h1>
+					</div>';
+			}	
+			?>
+			<div class="footer">
+			<hr/>
+				<a href="#" onClick="replacePage(\'site_content/contact.html\')"> Contact us. </a> All right reserved. Site developed by students of the Faculty of Electrical Engineering Sarajevo.
 			</div>
 				</div>
 
@@ -123,4 +121,5 @@
 	<script src="scripts/signUpValidation.js" type="text/javascript"></script>
 	<script src="scripts/zamgerWebService.js" type="text/javascript"></script>
 	<script src="scripts/SPA.js" type="text/javascript"></script>
+	<script src="scripts/crud.js" type="text/javascript"></script>
 </html>

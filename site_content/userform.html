@@ -1,0 +1,38 @@
+							<div>
+								<div class="tbLabel">Username</div>
+								<div class="tbInput"><input type="text" name="username" id="userbox"></div>
+							</div>
+							<div>
+								<div class="tbLabel">Name</div>
+								<div class="tbInput"><input type="text" name="name" id="namebox"></div>
+							</div>
+							<div>
+								<div class="tbLabel">Email</div>
+								<div class="tbInput"><input type="email" name="email" id="emailbox"></div>
+							</div>
+							<div>
+								<div class="tbLabel">Birthdate</div>
+								<div class="tbInput"><input type="date" name="date" id="datebox"></div>
+							</div>
+							<div>
+								<div class="tbLabel">Country</div>
+								<div class="tbInput"><input type="text" name="country" id="countrybox"></div>
+							</div>
+							<div>
+								<div class="tbLabel">Male</div>
+								<div class="tbInput"><input type="radio" name="gender" id="malebox" value="male" ></div>
+							</div>
+							<div>
+								<div class="tbLabel">Female</div>
+								<div class="tbInput"><input type="radio" name="gender" id="femalebox" value="female"></div>
+							</div>
+							<div>
+								<div class="tbLabel">ID</div>
+								<div class="tbInput"><input type="text" name="id" id="idbox" disabled></div>
+							</div>
+							<input type='hidden' value='-1' name='id' id="uid">
+							<div id="actionButtons">
+								<input class="actionButton" type='button' name="action"  value='delete' onClick="deleteUser()">
+								<input type='button' class="actionButton" name="action" value='update' onClick="updateUser()">
+								<input type='button' name="action" class="actionButton" value='create' onClick="createUser()">
+							</div>

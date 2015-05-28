@@ -1,0 +1,26 @@
+	<div>
+		<div class="tbLabel">Author</div>
+		<div class="tbInput"><input type="text" name="author" id="authorbox"></div>
+	</div>
+	<div>
+		<div class="tbLabel">Email</div>
+		<div class="tbInput"><input type="text" name="email" id="emailbox"></div>
+	</div>
+	<div>
+		<div class="tbLabel">Comment</div>
+		<div class="tbInput"><textarea rows="4" cols="31" name="comment" id="commentbox"></textarea></div>
+	</div>
+	<div>
+		<div class="tbLabel">Article ID</div>
+		<div class="tbInput"><input type="text" name="articlebox" id="articlebox"></div>	
+	</div>
+	<div>
+		<div class="tbLabel">ID</div>
+		<div class="tbInput"><input type="text" name="cid" id="idbox" disabled></div>	
+	</div>
+	<input type='hidden' value='-1' name='id' id="cid">
+	<div id="actionButtons">
+		<input class="actionButton"  onClick="deleteComment()"; type='button' name="action" value='delete'>
+		<input type='button' class="actionButton" name="action" onClick="updateComment()" value='update'>
+		<input type='button' name="action" class="actionButton" onClick="createCommentS()" value='create'>
+	</div>

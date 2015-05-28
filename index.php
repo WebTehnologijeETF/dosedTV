@@ -6,9 +6,23 @@
 		<title> dosedTV - socialize your watching </title>
 	</head>
 	<body>
+	<?php
+		session_start();
+	?>
 		<div class="logins" id="loginform">
-			<a onClick="showLoginForm()" id="loginbtn">Log in </a>
-			<a onClick="replacePage('site_content/signup.html')" id="signupbtn">Sign up</a>
+			<?php
+			if(isset($_SESSION['username'])){
+				echo "<form action='admin.php' method='POST' id='logoutform'><a href='admin.php'> Panel </a>";
+				echo "<a onClick='logoutForm()'> Logout </a><input type='hidden' name='login' value='Logout'></form>";
+				echo "<input type='hidden' id='usernameField' value='".$_SESSION['username']."' >";
+			}
+			else{
+				echo'
+				<a onClick="showLoginForm()" id="loginbtn">Log in </a>
+				<a onClick="replacePage("site_content/signup.html")" id="signupbtn">Sign up</a>';
+			}
+
+		?>
 		</div>
 		<div class="main">
 
@@ -41,8 +55,8 @@
 			</div>
 			<div id="content">
 				<div class="news">
-					<div class="headline">News stories</div>
-					<hr/>
+				<div class="headline">News stories</div>
+				<hr/>
 		<?php 
 			function get_news_db(){
 				$query = new PDO("mysql:dbname=doseddb;host=localhost;charset=utf8", "dosed", "pass");

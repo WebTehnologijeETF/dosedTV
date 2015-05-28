@@ -103,6 +103,47 @@ function showLoginForm(){
 
 }
 
+function getAllUsers(){
+	var req=new XMLHttpRequest();
+	var url="php/getUsers.php?ignored="+document.getElementById('usernameField').value;
+
+	req.onreadystatechange=function(){
+		if(req.readyState===4 && req.status===200){
+			var users=JSON.parse(req.responseText);
+			console.log(users[0]['name']);
+			var list=document.getElementById("List");
+			list.innerHTML="";
+			list.style.display='block';
+			for(var i=0;i<users.length;i++){
+				list.innerHTML+="<div class='user' id='user"+users[i]['id']+"' onClick='showUser(this)'>USERNAME: "+users[i]['username']+"<br>NAME: "+users[i]['name']+"<br>"+"EMAIL: "+users[i]['email']+"<br>"+"BIRTHDATE: "+users[i]['date']+"<br>"+"COUNTRY:<br>"+users[i]['country']+"<br>"+"GENDER: "+users[i]['gender']+"<br>ID:"+users[i]['id']+"<br><br>";}
+		}
+	}
+
+	req.open("GET",url,true);
+	req.send();
+
+}
+
+function getAllComments(){
+	var req=new XMLHttpRequest();
+	var url="php/getComments.php";
+
+	req.onreadystatechange=function(){
+		if(req.readyState===4 && req.status===200){
+			var comments=JSON.parse(req.responseText);
+			var list=document.getElementById("List");
+			list.innerHTML="";
+			list.style.display='block';
+			for(var i=0;i<comments.length;i++){
+				list.innerHTML+="<div class='comment' id='comment"+comments[i]['id']+"' onClick='showComment(this)'>AUTHOR: "+comments[i]['author']+"<br>"+"EMAIL: "+comments[i]['email']+"<br>"+"DATE: "+comments[i]['time']+"<br>"+"COMMENT:<br>"+comments[i]['comment']+"<br>"+"ARTICLE ID:<br>"+comments[i]['article']+"<br><br>";}
+		}
+	}
+
+	req.open("GET",url,true);
+	req.send();
+
+}
+
 function getAllArticles(){
 	var req=new XMLHttpRequest();
 	var url="php/getArticles.php";
@@ -110,7 +151,9 @@ function getAllArticles(){
 	req.onreadystatechange=function(){
 		if(req.readyState===4 && req.status===200){
 			var articles=JSON.parse(req.responseText);
-			var list=document.getElementById("articleList");
+			var list=document.getElementById("List");
+			list.innerHTML="";
+			list.style.display='block';
 			for(var i=0;i<articles.length;i++){
 				list.innerHTML+="<div class='article' id='article"+articles[i]['id']+"' onClick='showArticle(this)'>TITLE: "+articles[i]['title']+"<br>"+"AUTHOR: "+articles[i]['author']+"<br>"+"DATE: "+articles[i]['time']+"<br>"+"HEADLINE:<br>"+articles[i]['headline']+"<br>"+"ARTICLE:<br>"+articles[i]['article']+"<br><br>"+"PICTURE: "+articles[i]['url']+"<br>";articles
 			}
@@ -121,6 +164,89 @@ function getAllArticles(){
 	req.send();
 }
 
+
+function showUserForm(user){
+	var req=new XMLHttpRequest();
+	var url="site_content/userform.html";
+
+	req.onreadystatechange=function(){
+		if(req.readyState===4 && req.status===200){
+			document.getElementById('Form').innerHTML="";
+			document.getElementById('Form').innerHTML=req.responseText;
+			document.getElementById('Form').style.display="block";
+			document.getElementById('userbox').value=user['username'];
+			document.getElementById('namebox').value=user['name'];
+			document.getElementById('emailbox').value=user['email'];
+			document.getElementById('datebox').value=user['date'];
+			document.getElementById('countrybox').value=user['country'];
+			if(user['gender']==='male')
+				document.getElementById('malebox').checked=true;
+			else
+				document.getElementById('femalebox').checked=true;
+			document.getElementById('idbox').value=user['id'];
+		}
+	}
+	req.open("GET",url,true);
+	req.send();
+
+}
+
+function showUser(item){
+	var element_id=item.id;
+	var id=parseInt(element_id.replace('user',''));
+	var req=new XMLHttpRequest();
+	var url="php/getUsers.php?";
+
+	req.onreadystatechange=function(){
+		if(req.readyState===4 && req.status===200){
+			var user=JSON.parse(req.responseText);
+			showUserForm(user[0]);
+		}
+	}
+
+	req.open("GET",url+"user_id="+id,true);
+	req.send();
+}
+
+function showComment(item){
+	var element_id=item.id;
+	var id=parseInt(element_id.replace('comment',''));
+	var req=new XMLHttpRequest();
+	var url="php/getComments.php?";
+
+	req.onreadystatechange=function(){
+		if(req.readyState===4 && req.status===200){
+			var comment=JSON.parse(req.responseText);
+			showCommentForm(comment[0]);
+		}
+	}
+
+	req.open("GET",url+"comment_id="+id,true);
+	req.send();
+}
+
+function showCommentForm(comment){
+	var req=new XMLHttpRequest();
+	var url="site_content/commentform.html";
+
+	req.onreadystatechange=function(){
+		if(req.readyState===4 && req.status===200){
+			document.getElementById('Form').innerHTML="";
+			document.getElementById('Form').innerHTML=req.responseText;
+			document.getElementById('Form').style.display="block";
+			document.getElementById('authorbox').value=comment['author'];
+			document.getElementById('emailbox').value=comment['email'];
+			document.getElementById('commentbox').value=comment['comment'];
+			document.getElementById('articlebox').value=comment['article'];
+			document.getElementById('idbox').value=comment['id'];
+		}
+	}
+	req.open("GET",url,true);
+	req.send();
+
+}
+
+
 function showArticle(item){
 	var element_id=item.id;
 	var id=parseInt(element_id.replace('article',''));
@@ -130,15 +256,38 @@ function showArticle(item){
 	req.onreadystatechange=function(){
 		if(req.readyState===4 && req.status===200){
 			var article=JSON.parse(req.responseText);
-			document.getElementById('articleForm').style.display="block";
-			document.getElementById('titlebox').value=article[0]['title'];
-			document.getElementById('authorbox').value=article[0]['author'];
-			document.getElementById('headlinebox').value=article[0]['headline'];
-			document.getElementById('articlebox').value=article[0]['article'];
-			document.getElementById('picturebox').value=article[0]['url'];
+			showArticleForm(article[0]);
 		}
 	}
 
 	req.open("GET",url+"id="+id,true);
 	req.send();
 }
+
+function showArticleForm(article){
+	var req=new XMLHttpRequest();
+	var url="site_content/articleform.html";
+
+	req.onreadystatechange=function(){
+		if(req.readyState===4 && req.status===200){
+			document.getElementById('Form').innerHTML="";
+			document.getElementById('Form').innerHTML=req.responseText;
+			document.getElementById('Form').style.display="block";
+			document.getElementById('titlebox').value=article['title'];
+			document.getElementById('authorbox').value=article['author'];
+			document.getElementById('headlinebox').value=article['headline'];
+			document.getElementById('articlebox').value=article['article'];
+			document.getElementById('picturebox').value=article['url'];
+			document.getElementById('idbox').value=article['id'];
+		}
+	}
+	req.open("GET",url,true);
+	req.send();
+
+}
+
+function logoutForm(){
+	var form=document.getElementById('logoutform');
+	form.submit();
+}
+

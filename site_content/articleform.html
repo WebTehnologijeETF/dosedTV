@@ -1,0 +1,30 @@
+							<div>
+								<div class="tbLabel">Title</div>
+								<div class="tbInput"><input type="text" name="title" id="titlebox"></div>
+							</div>
+							<div>
+								<div class="tbLabel">Author</div>
+								<div class="tbInput"><input type="text" name="author" id="authorbox"></div>
+							</div>
+							<div>
+								<div class="tbLabel">Headline</div>
+								<div class="tbInput"><textarea rows="4" cols="31" name="headline" id="headlinebox"></textarea></div>
+							</div>
+							<div>
+								<div class="tbLabel">Article</div>
+								<div class="tbInput"><textarea rows="4" cols="31" name="article" id="articlebox"></textarea></div>
+							</div>
+							<div>
+								<div class="tbLabel">Picture URL</div>
+								<div class="tbInput"><input type="text" name="url" id="picturebox"></div>
+							</div>
+							<div>
+								<div class="tbLabel">ID</div>
+								<div class="tbInput"><input type="text" name="id" id="idbox" disabled></div>
+							</div>
+							<input type='hidden' value='-1' name='id' id="aid">
+							<div id="actionButtons">
+								<input class="actionButton" type='button' name="action" onClick="deleteArticleNews()" value='delete'>
+								<input type='button' class="actionButton" name="action" value='update' onClick="updateArticleNews()">
+								<input type='button' name="action" class="actionButton" value='create' onClick="createArticleNews()">
+							</div>
