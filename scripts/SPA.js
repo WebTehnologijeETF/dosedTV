@@ -183,6 +183,11 @@ function showUserForm(user){
 			else
 				document.getElementById('femalebox').checked=true;
 			document.getElementById('idbox').value=user['id'];
+			if(user['admin']!=0)
+				document.getElementById('adminbox').checked=true;
+			else
+				document.getElementById('adminbox').checked=false;
+
 		}
 	}
 	req.open("GET",url,true);

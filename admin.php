@@ -16,7 +16,7 @@
 	 		    $conn=new PDO("mysql:dbname=doseddb;host=localhost;charset=utf8", "dosed", "pass");
 			    $username=$_POST['username'];
 			    $password=$_POST['password'];
-			    $stmt=$conn->prepare('select username, password from users where username=:username');
+			    $stmt=$conn->prepare('select username, password, admin from users where username=:username');
 			   	$stmt->execute(array(':username' => $username));
 			    $result=$stmt->fetch(PDO::FETCH_ASSOC);
 				$check=crypt($_POST['password'],$result['password'])===$result['password'];
@@ -25,8 +25,15 @@
 			    	echo "<h1>Korisnik ne postoji</h1>";
 			    }
 			    else{
-					$_SESSION['username']=$username;
+			    	$_SESSION['username']=$username;
 				    $_SESSION['password']=$password;
+			    	if($result['admin']!=0){
+			    		$_SESSION['is_admin']=1;
+			    	}
+			    	else{
+			    		$_SESSION['is_admin']=0;
+			    	}
+					
 				}
 		    }
 		   
@@ -38,9 +45,16 @@
 		<div class="logins" id="loginform">
 		<?php
 			if(isset($_SESSION['username'])){
-				echo "<form action='admin.php' method='POST' id='logoutform'><a href='admin.php'> Panel </a>";
-				echo "<a onClick='logoutForm()'> Logout </a><input type='hidden' name='login' value='Logout'></form>";
-				echo "<input type='hidden' id='usernameField' value='".$_SESSION['username']."' >";
+				if($_SESSION['is_admin']==1){
+					echo "<form action='admin.php' method='POST' id='logoutform'><a href='admin.php'> Panel </a>";
+					echo "<a onClick='logoutForm()'> Logout </a><input type='hidden' name='login' value='Logout'></form>";
+					echo "<input type='hidden' id='usernameField' value='".$_SESSION['username']."' >";
+				}
+				else{
+					echo "<form action='admin.php' method='POST' id='logoutform'><a href='admin.php'> Home </a>";
+					echo "<a onClick='logoutForm()'> Logout </a><input type='hidden' name='login' value='Logout'></form>";
+					echo "<input type='hidden' id='usernameField' value='".$_SESSION['username']."' >";
+				}
 			}
 			else{
 				echo'
@@ -98,8 +112,15 @@
 					</div>
 				</div>';
 
-			if(isset($_SESSION['username']))
+			if(isset($_SESSION['username']) && $_SESSION['is_admin'])
 				echo $panel;
+			else if(isset($_SESSION['username'])){
+				echo '<div id="content">
+					<div class="headline">Panel</div>
+					<hr/>
+					<h1> LOG IN WAS SUCCESSFUL. WELCOME</h1>
+					</div>';
+			}
 			else{
 				echo '<div id="content">
 					<div class="headline">Panel</div>

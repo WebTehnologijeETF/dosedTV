@@ -25,6 +25,7 @@ body{
 	font-family: Hind;
 	font-size: 20px;
 	text-decoration: none;
+	margin-left: 5px;
 	border-radius: 5px;
 	padding-top:  4px;
 	padding-bottom: 4px;
@@ -39,6 +40,7 @@ body{
 
 
 #logo img{
+	border:1px solid black;
 	display:block;
 	z-index: 1000;
 	margin-right:auto;
@@ -46,6 +48,8 @@ body{
 }
 
 #logo{
+	display:block;
+	border: 1px solid black;
 	z-index: 100;
 	margin-right:auto;
 	margin-left: auto;
@@ -138,7 +142,7 @@ body{
 
 
 .headline{
-	padding-top: 1%;
+	padding-top: 2%;
 	font-size: 35px;
 	font-family: Hind;
 	font-style: italic;
@@ -163,6 +167,7 @@ body{
 #content{
 	margin-top: 22%;
 	font-family: Raleway;
+	border:1px solid rgba(0,0,0,0);
 }
 
 
@@ -198,12 +203,10 @@ body{
 
 
 .episodes{
-	display: table;
+	display: block;
 	border-spacing: 10px;
 	width: 100%;
-
 	position: relative;
-	margin-top: 16%;
 	margin-bottom: 5%;
 }
 
@@ -362,7 +365,6 @@ th:last-child{
 .recommended{
 	border-spacing: 10px;
 	width: 80%;
-	margin-top: 7%;
 	margin-bottom: 5%;
 	position: relative;
 }
@@ -686,12 +688,11 @@ th:last-child{
 
 
 .shows{
-	display: table;
+	display: block;
 	border-spacing: 10px;
 	width: 100%;
 	font-family: Raleway;
 	position: relative;
-	margin-top: 16%;
 	margin-bottom: 5%;
 }
 

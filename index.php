@@ -24,7 +24,6 @@
 		?>
 		</div>
 		<div class="main">
-
 			<div id="logo">	
 				<img src="pictures/logotv.png" alt="Site logo"/>
 			</div>
