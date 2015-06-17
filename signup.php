@@ -102,6 +102,7 @@
 					Date of birth: <?php echo $_POST['date'] ?><br>
 					Country: <?php echo $_POST['country'] ?><br>
 					Gender: <?php echo $_POST['gender'] ?><br>
+					<input type="hidden" value='<?php echo htmlentities(serialize($_POST)); ?>' name='account_details'>
 					<input type="hidden" name="message" value='<?php echo "ACCOUNT DETAILS: \n Username: ".$_POST["username"]."\n"."Email: ".$_POST["email"]."\n"."Name: ".$_POST["name"]."\n"."Birthday: ".$_POST["date"]."\n"."Country: ".$_POST["country"]."\n"."Gender: ".$_POST["gender"]."\n"; ?>'>
 				</p>
 				<div id="confirmFoot">Confirm the information:
@@ -111,7 +112,7 @@
 			</form>
 
 
-			<form id="logindata" action="signup_test.php" method="POST" style="visibility: <?php echo showForm(); ?>;">					
+			<form id="logindata" action="signup.php" method="POST" style="visibility: <?php echo showForm(); ?>;">					
 				<div class="userdata">
 					USER DATA
 				</div>

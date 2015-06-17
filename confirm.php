@@ -45,7 +45,14 @@
 			</div>
 			<hr>
 			<?php
-				require("sendgrid-php/sendgrid-php.php");
+
+				function createUser($data){
+					$conn=new PDO("mysql:dbname=doseddb;host=localhost;charset=utf8", "dosed", "pass");
+					$pass=crypt($data['pass1'], '$2a$15$Ku2hb./9aA71tPo/E015h.$');
+					$stmt=$conn->prepare("INSERT INTO users SET username=?, password='".$pass."', email=?, country=?, name=?, birthdate=?, gender=?");
+					$stmt->execute(array($data['username'],  $data['email'],  $data['country'],  $data['name'], date("Y-m-d",strtotime($data['date'])), $data['gender']));		
+				}
+				/*require("sendgrid-php/sendgrid-php.php");
 				$service_plan_id = "sendgrid_56d99"; // your OpenShift Service Plan ID
 				$account_info = json_decode(getenv($service_plan_id), true);
 				$sendgrid = new SendGrid("amuslija", "amuslija16487");
@@ -64,7 +71,8 @@
 				    foreach($e->getErrors() as $er) {
 				        echo $er;
 				    }
-				}
+				}*/
+				createUser(unserialize($_POST['account_details']));
 			?>
 			<div id="confirm">
 				Thank you for creating an account. Check your email to confirm it.<br>

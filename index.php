@@ -17,9 +17,8 @@
 				echo "<input type='hidden' id='usernameField' value='".$_SESSION['username']."' >";
 			}
 			else{
-				echo'
-				<a onClick="showLoginForm()" id="loginbtn">Log in </a>
-				<a onClick="replacePage("site_content/signup.html")" id="signupbtn">Sign up</a>';
+				echo'<a onClick="showLoginForm()" id="loginbtn">Log in </a>';
+				echo '<a onClick="replacePage('."'site_content/signup.html'".')" id="signupbtn">Sign up</a>';
 			}
 
 		?>

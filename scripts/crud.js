@@ -12,10 +12,9 @@ function deleteArticleNews(){
 	var picurl=document.getElementById("picturebox").value
 	var article=document.getElementById("articlebox").value;
 
-	req.open("POST",url,true);
+	req.open("DELETE",url,true);
 	req.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-	req.send("action=delete&id="+id);
-	//req.send("action=delete"+"&title="+title+"&author="+author+"&headline="+headline+"&article="+article+"&url="+picurl+"&id="+id);
+	req.send("id="+id);
 }
 
 function createArticleNews(){
@@ -34,7 +33,7 @@ function createArticleNews(){
 
 	req.open("POST",url,true);
 	req.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-	req.send("action=create"+"&title="+title+"&author="+author+"&headline="+headline+"&article="+article+"&url="+picurl+"&id="+id);
+	req.send("title="+title+"&author="+author+"&headline="+headline+"&article="+article+"&url="+picurl+"&id="+id);
 }
 
 function updateArticleNews(){
@@ -51,10 +50,11 @@ function updateArticleNews(){
 	var picurl=document.getElementById("picturebox").value
 	var article=document.getElementById("articlebox").value;
 
-	req.open("POST",url,true);
+	req.open("PUT",url,true);
 	req.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-	req.send("action=update"+"&title="+title+"&author="+author+"&headline="+headline+"&article="+article+"&url="+picurl+"&id="+id);
+	req.send("title="+title+"&author="+author+"&headline="+headline+"&article="+article+"&url="+picurl+"&id="+id);
 }
+
 
 function createCommentS(){
 	var req = new XMLHttpRequest();
@@ -70,7 +70,7 @@ function createCommentS(){
 
 	req.open("POST",url,true);
 	req.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-	req.send("action=create"+"&author="+name+"&email="+email+"&comment="+comment+"&article="+article);
+	req.send("author="+name+"&email="+email+"&comment="+comment+"&article="+article);
 }
 
 function updateComment(){
@@ -85,12 +85,9 @@ function updateComment(){
 		if(req.readyState===4 && req.status===200){
 		}
 	}
-
-
-	console.log("action=update"+"&author="+name+"&email="+email+"&comment="+comment+"&article="+article+"&id="+id);
 	req.open("POST",url,true);
 	req.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-	req.send("action=update"+"&author="+name+"&email="+email+"&comment="+comment+"&article="+article+"&id="+id);
+	req.send("author="+name+"&email="+email+"&comment="+comment+"&article="+article+"&id="+id);
 
 }
 
@@ -109,7 +106,7 @@ function deleteComment(){
 
 	req.open("POST",url,true);
 	req.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-	req.send("action=delete"+"&id="+id);
+	req.send("id="+id);
 }
 
 function createUser(){
@@ -134,7 +131,7 @@ function createUser(){
 
 	req.open("POST",url,true);
 	req.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-	req.send("action=create"+"&username="+username+"&name="+name+"&email="+email+"&date="+date+"&country="+country+"&gender="+gender);
+	req.send("username="+username+"&name="+name+"&email="+email+"&date="+date+"&country="+country+"&gender="+gender);
 
 }
 
@@ -160,7 +157,7 @@ function deleteUser(){
 
 	req.open("POST",url,true);
 	req.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-	req.send("action=delete"+"&id="+id);
+	req.send("id="+id);
 }
 
 function updateUser(){
@@ -185,5 +182,5 @@ function updateUser(){
 
 	req.open("POST",url,true);
 	req.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-	req.send("action=update"+"&username="+username+"&name="+name+"&email="+email+"&date="+date+"&country="+country+"&gender="+gender+"&id="+id)
+	req.send("username="+username+"&name="+name+"&email="+email+"&date="+date+"&country="+country+"&gender="+gender+"&id="+id)
 }

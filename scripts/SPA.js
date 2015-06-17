@@ -23,7 +23,7 @@ function replacePage(url,index)
 
 function setComments(index){
 	var req = new XMLHttpRequest();
-	url="php/getComments.php?news_id=";
+	url="php/commentsService.php?news_id=";
 
 	req.onreadystatechange=function(){
 		if(req.readyState==4 && req.status==200){
@@ -105,12 +105,11 @@ function showLoginForm(){
 
 function getAllUsers(){
 	var req=new XMLHttpRequest();
-	var url="php/getUsers.php?ignored="+document.getElementById('usernameField').value;
+	var url="php/userService.php?ignored=1&usernane="+document.getElementById('usernameField').value;
 
 	req.onreadystatechange=function(){
 		if(req.readyState===4 && req.status===200){
 			var users=JSON.parse(req.responseText);
-			console.log(users[0]['name']);
 			var list=document.getElementById("List");
 			list.innerHTML="";
 			list.style.display='block';
@@ -126,7 +125,7 @@ function getAllUsers(){
 
 function getAllComments(){
 	var req=new XMLHttpRequest();
-	var url="php/getComments.php";
+	var url="php/commentsService.php";
 
 	req.onreadystatechange=function(){
 		if(req.readyState===4 && req.status===200){
@@ -146,7 +145,7 @@ function getAllComments(){
 
 function getAllArticles(){
 	var req=new XMLHttpRequest();
-	var url="php/getArticles.php";
+	var url="php/articlesService.php";
 
 	req.onreadystatechange=function(){
 		if(req.readyState===4 && req.status===200){
@@ -195,16 +194,16 @@ function showUser(item){
 	var element_id=item.id;
 	var id=parseInt(element_id.replace('user',''));
 	var req=new XMLHttpRequest();
-	var url="php/getUsers.php?";
+	var url="php/userService.php?";
 
 	req.onreadystatechange=function(){
 		if(req.readyState===4 && req.status===200){
 			var user=JSON.parse(req.responseText);
-			showUserForm(user[0]);
+			showUserForm(user);
 		}
 	}
 
-	req.open("GET",url+"user_id="+id,true);
+	req.open("GET",url+"id="+id,true);
 	req.send();
 }
 
@@ -212,16 +211,16 @@ function showComment(item){
 	var element_id=item.id;
 	var id=parseInt(element_id.replace('comment',''));
 	var req=new XMLHttpRequest();
-	var url="php/getComments.php?";
+	var url="php/commentsService.php?";
 
 	req.onreadystatechange=function(){
 		if(req.readyState===4 && req.status===200){
 			var comment=JSON.parse(req.responseText);
-			showCommentForm(comment[0]);
+			showCommentForm(comment);
 		}
 	}
 
-	req.open("GET",url+"comment_id="+id,true);
+	req.open("GET",url+"id="+id,true);
 	req.send();
 }
 
@@ -251,12 +250,12 @@ function showArticle(item){
 	var element_id=item.id;
 	var id=parseInt(element_id.replace('article',''));
 	var req=new XMLHttpRequest();
-	var url="php/getArticles.php?";
+	var url="php/articlesService.php?";
 
 	req.onreadystatechange=function(){
 		if(req.readyState===4 && req.status===200){
 			var article=JSON.parse(req.responseText);
-			showArticleForm(article[0]);
+			showArticleForm(article);
 		}
 	}
 
